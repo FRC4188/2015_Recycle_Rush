@@ -26,6 +26,8 @@ public class DriveTrain extends Subsystem{
 	
 	DigitalInput limSwitch = RobotMap.limSwitch1;
 	
+	AnalogInput potentiometer = RobotMap.potentiometer;
+	
 	public void init (){
 		gyro.reset();
 	}
@@ -72,5 +74,11 @@ public class DriveTrain extends Subsystem{
 		boolean LimSwitch;
 		LimSwitch = limSwitch.get();
 		return LimSwitch;
+	}
+	
+	public int getPotentiometerValue(){
+		int Potentiometer;
+		Potentiometer = potentiometer.getValue();
+		return Potentiometer;
 	}
 }

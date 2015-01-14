@@ -47,6 +47,8 @@ public class RobotMap {
 	public static Encoder encoder3;
 	public static Encoder encoder4;
 	
+	public static AnalogInput potentiometer;
+	
 	public static DigitalInput limSwitch1;
 	
 	public static void init() {
@@ -87,6 +89,8 @@ public class RobotMap {
 		encoder3 = new Encoder (4,5);
 		encoder4 = new Encoder (6,7);
 		
-		limSwitch1 = new DigitalInput(0); //DIO
+		limSwitch1 = new DigitalInput(8); //DIO
+		
+		potentiometer = new AnalogInput(1); //AIO
 	}
 }

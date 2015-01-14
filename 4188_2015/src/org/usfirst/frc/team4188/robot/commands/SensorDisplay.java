@@ -27,6 +27,7 @@ public class SensorDisplay extends Command {
     	CorpsLog.log("Rear Left Encoder", Robot.drivetrain.getEncoderRL(), true, false);
     	
     	CorpsLog.log("Limit Switch", Robot.drivetrain.getLimSwitch(), true, false);
+    	CorpsLog.log("Potentiometer", Robot.drivetrain.getPotentiometerValue(), true, false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
