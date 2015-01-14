@@ -19,6 +19,11 @@ public class DriveTrain extends Subsystem{
 	Talon rearRight = RobotMap.rearRight;
 	Gyro gyro = RobotMap.drivetraingyro;
 	
+	Encoder encoderFrontRight = RobotMap.encoder1;
+	Encoder encoderFrontLeft = RobotMap.encoder2;
+	Encoder encoderRearRight = RobotMap.encoder3;
+	Encoder encoderRearLeft = RobotMap.encoder4;
+	
 	public void init (){
 		gyro.reset();
 	}
@@ -32,4 +37,32 @@ public class DriveTrain extends Subsystem{
 	public void driveWithJoystick(double x, double y, double twist, double throttle, double direction){
         robotDrive.mecanumDrive_Cartesian(x*throttle, -y*throttle, twist*throttle, direction);
     }
+	
+	public double getEncoderFR(){
+		double EncoderValue1;
+		EncoderValue1 = encoderFrontRight.getDistance();
+		return EncoderValue1;
+	}
+	
+	public double getEncoderFL(){
+		double EncoderValue1;
+		EncoderValue1 = encoderFrontLeft.getDistance();
+		return EncoderValue1;
+	}
+	
+	public double getEncoderRR(){
+		double EncoderValue1;
+		EncoderValue1 = encoderRearRight.getDistance();
+		return EncoderValue1;
+	}
+	
+	public double getEncoderRL(){
+		double EncoderValue1;
+		EncoderValue1 = encoderRearLeft.getDistance();
+		return EncoderValue1;
+	}
+	
+	public void autoDrive(double xSpeed, double ySpeed, double throttle, double direction){
+		robotDrive.mecanumDrive_Cartesian(xSpeed, ySpeed, throttle, direction);
+	}
 }

@@ -42,6 +42,11 @@ public class RobotMap {
 	public static DoubleSolenoid testSolenoid3;
 	public static DoubleSolenoid testSolenoid4;
 	
+	public static Encoder encoder1;
+	public static Encoder encoder2;
+	public static Encoder encoder3;
+	public static Encoder encoder4;
+	
 	public static void init() {
 		
 		drivetraingyro = new Gyro(0); //Analog
@@ -74,5 +79,10 @@ public class RobotMap {
 		testSolenoid2 = new DoubleSolenoid(2,3);
 		testSolenoid3 = new DoubleSolenoid(4,5);
 		testSolenoid4 = new DoubleSolenoid(6,7);
+		
+		encoder1 = new Encoder (0,1);
+		encoder2 = new Encoder (2,3);
+		encoder3 = new Encoder (4,5);
+		encoder4 = new Encoder (6,7);
 	}
 }
