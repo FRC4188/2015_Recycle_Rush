@@ -47,11 +47,13 @@ public class RobotMap {
 	public static Encoder encoder3;
 	public static Encoder encoder4;
 	
+	public static DigitalInput limSwitch1;
+	
 	public static void init() {
 		
 		drivetraingyro = new Gyro(0); //Analog
 		
-		frontLeft = new Talon(0); //PWM
+		frontLeft = new Talon(0); //PWM --> needs to change to CAN
 		frontRight = new Talon(1);
 		rearLeft = new Talon(2);
 		rearRight = new Talon(3);
@@ -64,7 +66,7 @@ public class RobotMap {
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		
-		testMotor1 = new Talon(4); //PWM
+		testMotor1 = new Talon(4); //PWM --> needs to change to CAN
 		testMotor2 = new Talon(5);
 		testMotor3 = new Talon(6);
 		testMotor4 = new Talon(7);
@@ -80,9 +82,11 @@ public class RobotMap {
 		testSolenoid3 = new DoubleSolenoid(4,5);
 		testSolenoid4 = new DoubleSolenoid(6,7);
 		
-		encoder1 = new Encoder (0,1);
+		encoder1 = new Encoder (0,1); //PWM
 		encoder2 = new Encoder (2,3);
 		encoder3 = new Encoder (4,5);
 		encoder4 = new Encoder (6,7);
+		
+		limSwitch1 = new DigitalInput(0); //DIO
 	}
 }

@@ -24,6 +24,8 @@ public class DriveTrain extends Subsystem{
 	Encoder encoderRearRight = RobotMap.encoder3;
 	Encoder encoderRearLeft = RobotMap.encoder4;
 	
+	DigitalInput limSwitch = RobotMap.limSwitch1;
+	
 	public void init (){
 		gyro.reset();
 	}
@@ -64,5 +66,11 @@ public class DriveTrain extends Subsystem{
 	
 	public void autoDrive(double xSpeed, double ySpeed, double throttle, double direction){
 		robotDrive.mecanumDrive_Cartesian(xSpeed, ySpeed, throttle, direction);
+	}
+	
+	public boolean getLimSwitch(){
+		boolean LimSwitch;
+		LimSwitch = limSwitch.get();
+		return LimSwitch;
 	}
 }
