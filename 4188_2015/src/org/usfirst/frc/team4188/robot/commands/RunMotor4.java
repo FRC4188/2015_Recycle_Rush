@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CorpsJoystick;
 import org.usfirst.frc.team4188.robot.Robot;
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

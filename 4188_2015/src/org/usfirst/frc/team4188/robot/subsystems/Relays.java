@@ -4,7 +4,6 @@ import org.usfirst.frc.team4188.robot.RobotMap;
 import org.usfirst.frc.team4188.robot.commands.RelaysDoNothing;
 
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

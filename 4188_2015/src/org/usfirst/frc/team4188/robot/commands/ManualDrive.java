@@ -3,8 +3,6 @@ package org.usfirst.frc.team4188.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.*;
 
-import org.usfirst.frc.team4188.*;
-import org.usfirst.frc.team4188.robot.CorpsLog;
 import org.usfirst.frc.team4188.robot.Robot;
 import org.usfirst.frc.team4188.robot.RobotMap;
 
