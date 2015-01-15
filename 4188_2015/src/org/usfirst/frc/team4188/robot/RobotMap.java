@@ -47,9 +47,9 @@ public class RobotMap {
 	public static Encoder encoder3;
 	public static Encoder encoder4;
 	
-	public static AnalogInput potentiometer;
-	
 	public static DigitalInput limSwitch1;
+	
+	public static AnalogInput potentiometer;
 	
 	public static void init() {
 		

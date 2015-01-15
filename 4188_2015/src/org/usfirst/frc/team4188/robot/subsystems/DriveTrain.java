@@ -30,6 +30,16 @@ public class DriveTrain extends Subsystem{
 	
 	public void init (){
 		gyro.reset();
+		
+		encoderFrontRight.setDistancePerPulse(1.0);
+		encoderFrontLeft.setDistancePerPulse(1.0);
+		encoderRearRight.setDistancePerPulse(1.0);
+		encoderRearLeft.setDistancePerPulse(1.0);
+		
+		encoderFrontRight.reset();
+	    encoderFrontLeft.reset();
+	    encoderRearRight.reset();
+	    encoderRearLeft.reset();
 	}
 	 
 	public void initDefaultCommand() {
@@ -43,42 +53,38 @@ public class DriveTrain extends Subsystem{
     }
 	
 	public double getEncoderFR(){
-		double EncoderValue1;
-		EncoderValue1 = encoderFrontRight.getDistance();
-		return EncoderValue1;
+		return encoderFrontRight.getDistance();
 	}
 	
 	public double getEncoderFL(){
-		double EncoderValue1;
-		EncoderValue1 = encoderFrontLeft.getDistance();
-		return EncoderValue1;
+		return encoderFrontLeft.getDistance();
 	}
 	
 	public double getEncoderRR(){
-		double EncoderValue1;
-		EncoderValue1 = encoderRearRight.getDistance();
-		return EncoderValue1;
+		return encoderRearRight.getDistance();
 	}
 	
 	public double getEncoderRL(){
-		double EncoderValue1;
-		EncoderValue1 = encoderRearLeft.getDistance();
-		return EncoderValue1;
+		return encoderRearLeft.getDistance();
 	}
 	
-	public void autoDrive(double xSpeed, double ySpeed, double throttle, double direction){
-		robotDrive.mecanumDrive_Cartesian(xSpeed, ySpeed, throttle, direction);
+	public void resetEncoders()
+    {
+		encoderFrontRight.reset();
+	    encoderFrontLeft.reset();
+	    encoderRearRight.reset();
+	    encoderRearLeft.reset();
+    }
+	
+	public void autoDrive(double xSpeed, double ySpeed, double twist, double direction){
+		robotDrive.mecanumDrive_Cartesian(xSpeed, ySpeed, twist, direction);
 	}
 	
 	public boolean getLimSwitch(){
-		boolean LimSwitch;
-		LimSwitch = limSwitch.get();
-		return LimSwitch;
+		return limSwitch.get();
 	}
 	
 	public int getPotentiometerValue(){
-		int Potentiometer;
-		Potentiometer = potentiometer.getValue();
-		return Potentiometer;
+		return potentiometer.getValue();
 	}
 }
