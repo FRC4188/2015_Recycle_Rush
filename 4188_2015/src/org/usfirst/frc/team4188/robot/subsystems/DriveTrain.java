@@ -7,14 +7,15 @@ import org.usfirst.frc.team4188.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem{
 	
 	RobotDrive robotDrive = RobotMap.driveBase;
-	Talon frontLeft = RobotMap.frontLeft;
-	Talon frontRight = RobotMap.frontRight;
-	Talon rearLeft = RobotMap.rearLeft;
-	Talon rearRight = RobotMap.rearRight;
+	CANTalon frontLeft = RobotMap.frontLeft;
+	CANTalon frontRight = RobotMap.frontRight;
+	CANTalon rearLeft = RobotMap.rearLeft;
+	CANTalon rearRight = RobotMap.rearRight;
 	Gyro gyro = RobotMap.drivetraingyro;
 	
 	Encoder encoderFrontRight = RobotMap.encoder1;
@@ -65,6 +66,14 @@ public class DriveTrain extends Subsystem{
 	public double getEncoderRL(){
 		return encoderRearLeft.getDistance();
 	}
+	
+	public void getEncoderValues(){        
+        SmartDashboard.putNumber("gyro",gyro.getAngle());
+        SmartDashboard.putNumber("frontLeftEncoder distance", encoderFrontRight.getDistance());
+        SmartDashboard.putNumber("frontRightEncoder distance", encoderFrontLeft.getDistance());
+        SmartDashboard.putNumber("rearLeftEncoder distance", encoderRearRight.getDistance());
+        SmartDashboard.putNumber("rearRightEncoder distance", encoderRearLeft.getDistance());
+ }
 	
 	public void resetEncoders()
     {

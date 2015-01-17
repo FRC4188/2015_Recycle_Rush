@@ -107,14 +107,14 @@ public class OI {
         pilot8.whenPressed(new Pneumatic3Backward());
         pilot10.whenPressed(new Pneumatic4Backward());
         
-        pilot11.whenPressed(new Relay1Forward());
-        pilot12.whenPressed(new Relay1Backward());
-        copilot6.whenPressed(new Relay2Forward());
-        copilot7.whenPressed(new Relay2Backward());
-        copilot8.whenPressed(new Relay3Forward());
-        copilot9.whenPressed(new Relay3Backward());
-        copilot11.whenPressed(new Relay4Forward());
-        copilot10.whenPressed(new Relay4Backward());
+        pilot11.whileHeld(new Relay1Forward());
+        pilot12.whileHeld(new Relay1Backward());
+        copilot6.whileHeld(new Relay2Forward());
+        copilot7.whileHeld(new Relay2Backward());
+        copilot8.whileHeld(new Relay3Forward());
+        copilot9.whileHeld(new Relay3Backward());
+        copilot11.whileHeld(new Relay4Forward());
+        copilot10.whileHeld(new Relay4Backward());
     }
     
     public Joystick getpilotJoystick() {

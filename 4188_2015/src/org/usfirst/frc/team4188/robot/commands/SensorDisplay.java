@@ -21,10 +21,12 @@ public class SensorDisplay extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	CorpsLog.log("Front Right Encoder", Robot.drivetrain.getEncoderFR(), true, false);
-    	CorpsLog.log("Front Left Encoder", Robot.drivetrain.getEncoderFL(), true, false);
-    	CorpsLog.log("Rear Right Encoder", Robot.drivetrain.getEncoderRR(), true, false);
-    	CorpsLog.log("Rear Left Encoder", Robot.drivetrain.getEncoderRL(), true, false);
+//    	CorpsLog.log("Front Right Encoder", Robot.drivetrain.getEncoderFR(), true, false);
+//    	CorpsLog.log("Front Left Encoder", Robot.drivetrain.getEncoderFL(), true, false);
+//    	CorpsLog.log("Rear Right Encoder", Robot.drivetrain.getEncoderRR(), true, false);
+//    	CorpsLog.log("Rear Left Encoder", Robot.drivetrain.getEncoderRL(), true, false);
+    	
+    	Robot.drivetrain.getEncoderValues();
     	
     	CorpsLog.log("Limit Switch", Robot.drivetrain.getLimSwitch(), true, false);
     	CorpsLog.log("Potentiometer", Robot.drivetrain.getPotentiometerValue(), true, false);

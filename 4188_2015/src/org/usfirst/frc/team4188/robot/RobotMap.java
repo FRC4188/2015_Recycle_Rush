@@ -20,16 +20,16 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	public static RobotDrive driveBase;
-	public static Talon frontLeft;
-	public static Talon frontRight;
-	public static Talon rearLeft;
-	public static Talon rearRight;
+	public static CANTalon frontLeft;
+	public static CANTalon frontRight;
+	public static CANTalon rearLeft;
+	public static CANTalon rearRight;
 	public static Gyro drivetraingyro;
 	
-	public static Talon testMotor1;
-	public static Talon testMotor2;
-	public static Talon testMotor3;
-	public static Talon testMotor4;
+	public static CANTalon testMotor1;
+	public static CANTalon testMotor2;
+	public static CANTalon testMotor3;
+	public static CANTalon testMotor4;
 	
 	public static Relay testRelay1;
 	public static Relay testRelay2;
@@ -55,10 +55,10 @@ public class RobotMap {
 		
 		drivetraingyro = new Gyro(0); //Analog
 		
-		frontLeft = new Talon(0); //PWM --> needs to change to CAN
-		frontRight = new Talon(1);
-		rearLeft = new Talon(2);
-		rearRight = new Talon(3);
+		frontLeft = new CANTalon(11); 
+		frontRight = new CANTalon(12);
+		rearLeft = new CANTalon(13);
+		rearRight = new CANTalon(14);
 		
 		driveBase = new RobotDrive (frontLeft, rearLeft, frontRight, rearRight);
 		driveBase.setSafetyEnabled(false);
@@ -68,10 +68,10 @@ public class RobotMap {
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		
-		testMotor1 = new Talon(4); //PWM --> needs to change to CAN
-		testMotor2 = new Talon(5);
-		testMotor3 = new Talon(6);
-		testMotor4 = new Talon(7);
+		testMotor1 = new CANTalon(4); //PWM
+		testMotor2 = new CANTalon(5);
+		testMotor3 = new CANTalon(6);
+		testMotor4 = new CANTalon(7);
 		
 		testRelay1 = new Relay(0, Relay.Direction.kBoth); //Relay
 		testRelay2 = new Relay(1, Relay.Direction.kBoth);

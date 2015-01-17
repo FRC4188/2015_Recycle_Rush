@@ -16,6 +16,8 @@ public class Relays extends Subsystem {
 	Relay relay3 = RobotMap.testRelay3;
 	Relay relay4 = RobotMap.testRelay4;
 	
+	public boolean RelayOn;
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -24,6 +26,8 @@ public class Relays extends Subsystem {
 		relay2.set(Relay.Value.kOff);
 		relay3.set(Relay.Value.kOff);
 		relay4.set(Relay.Value.kOff);
+		
+		RelayOn = false;
 	}
 	
     public void initDefaultCommand() {
@@ -33,8 +37,9 @@ public class Relays extends Subsystem {
     }
     
     public void runRelay1Forward(){
-//    	relay1.set(Relay.Value.kOn);
     	relay1.set(Relay.Value.kForward);
+    	RelayOn = true;
+//    	relay1.set(Relay.Value.kForward);
     }
     
     public void runRelay1Backward(){
@@ -44,6 +49,11 @@ public class Relays extends Subsystem {
     
     public void stopRelay1(){
     	relay1.set(Relay.Value.kOff);
+    	RelayOn = false;
+    }
+    
+    public boolean isRelay1On(){
+    	return RelayOn;
     }
     
     public void runRelay2Forward(){

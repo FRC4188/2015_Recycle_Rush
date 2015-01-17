@@ -45,11 +45,11 @@ public class Robot extends IterativeRobot {
 		pneumatics = new Pneumatics();
 		relays = new Relays();
 		
-		 motors.init();
-	     drivetrain.init();
-	     pneumatics.init();
-	     relays.init();
-        // instantiate the command used for the autonomous period
+		motors.init();
+	    drivetrain.init();
+	    pneumatics.init();
+	    relays.init();
+	    
         autonomousCommand = new Autonomous();
         sensors = new SensorDisplay();
     }
