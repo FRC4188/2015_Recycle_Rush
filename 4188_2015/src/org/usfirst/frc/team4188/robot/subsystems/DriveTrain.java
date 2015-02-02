@@ -6,6 +6,7 @@ import org.usfirst.frc.team4188.robot.RobotMap;
 import org.usfirst.frc.team4188.robot.commands.ManualDrive;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -18,10 +19,10 @@ public class DriveTrain extends Subsystem{
 	CANTalon rearRight = RobotMap.rearRight;
 	Gyro gyro = RobotMap.drivetraingyro;
 	
-	Encoder encoderFrontRight = RobotMap.encoder1;
+/**	Encoder encoderFrontRight = RobotMap.encoder1;
 	Encoder encoderFrontLeft = RobotMap.encoder2;
 	Encoder encoderRearRight = RobotMap.encoder3;
-	Encoder encoderRearLeft = RobotMap.encoder4;
+	Encoder encoderRearLeft = RobotMap.encoder4;**/
 	
 	DigitalInput limSwitch = RobotMap.limSwitch1;
 	
@@ -30,15 +31,10 @@ public class DriveTrain extends Subsystem{
 	public void init (){
 		gyro.reset();
 		
-		encoderFrontRight.setDistancePerPulse(1.0);
-		encoderFrontLeft.setDistancePerPulse(1.0);
-		encoderRearRight.setDistancePerPulse(1.0);
-		encoderRearLeft.setDistancePerPulse(1.0);
-		
-		encoderFrontRight.reset();
+	/**	encoderFrontRight.reset();
 	    encoderFrontLeft.reset();
 	    encoderRearRight.reset();
-	    encoderRearLeft.reset();
+	    encoderRearLeft.reset();**/
 	}
 	 
 	public void initDefaultCommand() {
@@ -48,40 +44,59 @@ public class DriveTrain extends Subsystem{
     }
 	
 	public void driveWithJoystick(double x, double y, double twist, double throttle, double direction){
-        robotDrive.mecanumDrive_Cartesian(x*throttle, -y*throttle, twist*throttle, direction);
+        robotDrive.mecanumDrive_Cartesian(0.5*x*throttle, -0.5*y*throttle, 0.5*twist*throttle, direction);
     }
 	
+	public void slowAccelerate(){
+		frontLeft.setVoltageRampRate(2.5);
+		frontRight.setVoltageRampRate(2.5);
+		rearLeft.setVoltageRampRate(2.5);
+		rearRight.setVoltageRampRate(2.5);
+	}
+	
+	public void fastAccelerate(){
+		frontLeft.setVoltageRampRate(10);
+		frontRight.setVoltageRampRate(10);
+		rearLeft.setVoltageRampRate(10);
+		rearRight.setVoltageRampRate(10);
+	}
+	
 	public double getEncoderFR(){
-		return encoderFrontRight.getDistance();
+		return frontRight.getEncPosition();
 	}
 	
 	public double getEncoderFL(){
-		return encoderFrontLeft.getDistance();
+		return frontLeft.getEncPosition();
 	}
 	
 	public double getEncoderRR(){
-		return encoderRearRight.getDistance();
+		return rearRight.getEncPosition();
 	}
 	
 	public double getEncoderRL(){
-		return encoderRearLeft.getDistance();
+		return rearLeft.getEncPosition();
 	}
 	
 	public void getEncoderValues(){        
         SmartDashboard.putNumber("gyro",gyro.getAngle());
-        SmartDashboard.putNumber("frontLeftEncoder distance", encoderFrontRight.getDistance());
-        SmartDashboard.putNumber("frontRightEncoder distance", encoderFrontLeft.getDistance());
-        SmartDashboard.putNumber("rearLeftEncoder distance", encoderRearRight.getDistance());
-        SmartDashboard.putNumber("rearRightEncoder distance", encoderRearLeft.getDistance());
+//        SmartDashboard.putNumber("frontLeftEncoder distance", encoderFrontLeft.getDistance());
+//        SmartDashboard.putNumber("frontRightEncoder distance", encoderFrontRight.getDistance());
+//        SmartDashboard.putNumber("rearLeftEncoder distance", encoderRearLeft.getDistance());
+//        SmartDashboard.putNumber("rearRightEncoder distance", encoderRearRight.getDistance());
+        
+        SmartDashboard.putNumber("frontLeftEncoder distance", frontLeft.getEncPosition());
+        SmartDashboard.putNumber("frontRightEncoder distance", frontRight.getEncPosition());
+        SmartDashboard.putNumber("rearLeftEncoder distance", rearLeft.getEncPosition());
+        SmartDashboard.putNumber("rearRightEncoder distance", rearRight.getEncPosition());
  }
 	
-	public void resetEncoders()
+	/**public void resetEncoders()
     {
 		encoderFrontRight.reset();
 	    encoderFrontLeft.reset();
 	    encoderRearRight.reset();
 	    encoderRearLeft.reset();
-    }
+    }**/
 	
 	public void autoDrive(double xSpeed, double ySpeed, double twist, double direction){
 		robotDrive.mecanumDrive_Cartesian(xSpeed, ySpeed, twist, direction);

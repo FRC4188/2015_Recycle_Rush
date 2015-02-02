@@ -25,6 +25,9 @@ public class ManualDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(Math.abs(pilotStick.getX()*pilotStick.getThrottle()) > 0.3 || Math.abs(pilotStick.getY()*pilotStick.getThrottle()) > 0.3 || Math.abs(pilotStick.getTwist()*pilotStick.getThrottle()) > 0.3) Robot.drivetrain.slowAccelerate();
+    	else Robot.drivetrain.fastAccelerate();
+    	
     	Robot.drivetrain.driveWithJoystick(pilotStick.getX(), pilotStick.getY(), pilotStick.getTwist(), pilotStick.getThrottle(), RobotMap.drivetraingyro.getAngle()*.03);
     }
 

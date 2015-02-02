@@ -15,11 +15,13 @@ public class RunMotor1 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//LIFT MOTORS
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.motors.runMotor1WithJoystick(Robot.oi.copilotJoystick.getY());
+    	Robot.motors.runMotor3WithJoystick(Robot.oi.copilotJoystick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

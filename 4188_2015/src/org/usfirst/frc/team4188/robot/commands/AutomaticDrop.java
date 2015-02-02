@@ -1,17 +1,21 @@
 package org.usfirst.frc.team4188.robot.commands;
 
 import org.usfirst.frc.team4188.robot.Robot;
+import org.usfirst.frc.team4188.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Pneumatic3Forward extends Command {
+public class AutomaticDrop extends Command {
 
-    public Pneumatic3Forward() {
+	private boolean doneYet1;
+	
+    public AutomaticDrop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	doneYet1 = false;
     }
 
     // Called just before this Command runs the first time
@@ -20,16 +24,21 @@ public class Pneumatic3Forward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.pneumatics.setPneumatic3Forward();
+    	if(!doneYet1){
+    		if(Robot.motors.isLim3Hit()) Robot.motors.runMotor2(-0.3);
+    		else Robot.motors.stopMotor2();
+    		doneYet1 = true;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return doneYet1;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	doneYet1 = false;
     }
 
     // Called when another command which requires one or more of the same

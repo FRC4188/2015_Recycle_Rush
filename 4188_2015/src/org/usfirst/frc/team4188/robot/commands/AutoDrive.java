@@ -32,7 +32,7 @@ public class AutoDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.resetEncoders();
+//    	Robot.drivetrain.resetEncoders();
 
        startFrontLeft = Robot.drivetrain.getEncoderFL();
        startFrontRight = Robot.drivetrain.getEncoderFR();
@@ -63,7 +63,7 @@ public class AutoDrive extends Command {
 	        if (((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) > 20) &&
 	                ((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) < 25)) twistValue = 0.2;
 	        if (((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) > 20) &&
-	                ((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) < 25)) twistValue = -0.2;
+	                ((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) < 25)) twistValue = -0.2; 
 	        
 	        
 	        if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.25*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.25*distance)) Robot.drivetrain.autoDrive(0, speed, twistValue , 0);

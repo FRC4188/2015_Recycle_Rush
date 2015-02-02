@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4188.robot;
 
 import org.usfirst.frc.team4188.robot.commands.*;
+
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,6 +38,8 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
+	//joysticks and joystick buttons
+	
 	public JoystickButton pilot1;
 	public JoystickButton pilot2;
 	public JoystickButton pilot3;
@@ -64,9 +68,14 @@ public class OI {
     public CorpsJoystick pilotJoystick;
     public CorpsJoystick copilotJoystick;
     
+    //Smart Dashboard buttons
+    
+    InternalButton button1;
+    
     public OI() {
+    	//joysticks and joystick buttons
     	pilotJoystick = new CorpsJoystick(0,4,12,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0,-12.0,12.0,2,1.0);
-        copilotJoystick = new CorpsJoystick(1,3,11,-5,5,1,1,-1,1,1,1,0,0,0,0);
+        copilotJoystick = new CorpsJoystick(1,3,11,-5,5,1,1,-12.0,12.0,1,1.0,-12.0,12.0,2,1.0);
 	
         pilot1 = new JoystickButton(pilotJoystick, 1);
         pilot2 = new JoystickButton(pilotJoystick, 2);
@@ -98,16 +107,10 @@ public class OI {
         copilot4.whileHeld(new RunMotor3());
         copilot5.whileHeld(new RunMotor4());
         
-        pilot5.whenPressed(new Pneumatic1Forward());
-        pilot6.whenPressed(new Pneumatic2Forward());
-        pilot3.whenPressed(new Pneumatic1Backward());
-        pilot4.whenPressed(new Pneumatic2Backward());
-        pilot7.whenPressed(new Pneumatic3Forward());
-        pilot9.whenPressed(new Pneumatic4Forward());
-        pilot8.whenPressed(new Pneumatic3Backward());
-        pilot10.whenPressed(new Pneumatic4Backward());
+        pilot5.whenPressed(new AutomaticGrab());
+        pilot3.whenPressed(new AutomaticDrop());
         
-        pilot11.whileHeld(new Relay1Forward());
+        pilot11.whenPressed(new Relay1Forward());
         pilot12.whileHeld(new Relay1Backward());
         copilot6.whileHeld(new Relay2Forward());
         copilot7.whileHeld(new Relay2Backward());
@@ -115,6 +118,15 @@ public class OI {
         copilot9.whileHeld(new Relay3Backward());
         copilot11.whileHeld(new Relay4Forward());
         copilot10.whileHeld(new Relay4Backward());
+        
+        //smartdashboard buttons
+  /**      button1 = new InternalButton();
+        
+        SmartDashboard.putData("Relay 1", button1);
+        
+        button1.whenPressed(new Relay1Forward());
+        
+        SmartDashboard.putData(new Relay1Forward()); **/
     }
     
     public Joystick getpilotJoystick() {

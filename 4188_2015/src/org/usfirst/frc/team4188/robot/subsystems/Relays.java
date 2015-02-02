@@ -31,7 +31,7 @@ public class Relays extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new RelaysDoNothing());
+//    	setDefaultCommand(new RelaysDoNothing());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

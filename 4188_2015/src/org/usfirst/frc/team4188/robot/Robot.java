@@ -5,12 +5,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4188.robot.commands.Autonomous;
+import org.usfirst.frc.team4188.robot.commands.Relay1Forward;
 import org.usfirst.frc.team4188.robot.commands.SensorDisplay;
 import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4188.robot.subsystems.Motors;
-import org.usfirst.frc.team4188.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4188.robot.subsystems.Relays;
 
 /**
@@ -29,7 +30,6 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Motors motors;
-	public static Pneumatics pneumatics;
 	public static Relays relays;
 
 
@@ -42,12 +42,10 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drivetrain = new DriveTrain();
 		motors = new Motors();
-		pneumatics = new Pneumatics();
 		relays = new Relays();
 		
 		motors.init();
 	    drivetrain.init();
-	    pneumatics.init();
 	    relays.init();
 	    
         autonomousCommand = new Autonomous();
@@ -60,6 +58,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	sensors.start();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 

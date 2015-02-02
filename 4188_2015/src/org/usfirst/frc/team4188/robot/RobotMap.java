@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4188.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -36,29 +39,27 @@ public class RobotMap {
 	public static Relay testRelay3;
 	public static Relay testRelay4;
 	
-	public static Compressor Compressor;
-	public static DoubleSolenoid testSolenoid1;
-	public static DoubleSolenoid testSolenoid2;
-	public static DoubleSolenoid testSolenoid3;
-	public static DoubleSolenoid testSolenoid4;
-	
-	public static Encoder encoder1;
-	public static Encoder encoder2;
-	public static Encoder encoder3;
-	public static Encoder encoder4;
-	
 	public static DigitalInput limSwitch1;
+	public static DigitalInput limSwitch2;
+	public static DigitalInput limSwitch3;
+	public static DigitalInput limSwitch4;
 	
 	public static AnalogInput potentiometer;
 	
 	public static void init() {
 		
 		drivetraingyro = new Gyro(0); //Analog
+		drivetraingyro.setSensitivity(0.007);
 		
 		frontLeft = new CANTalon(11); 
 		frontRight = new CANTalon(12);
 		rearLeft = new CANTalon(13);
 		rearRight = new CANTalon(14);
+		
+		frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		rearLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		rearRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		
 		driveBase = new RobotDrive (frontLeft, rearLeft, frontRight, rearRight);
 		driveBase.setSafetyEnabled(false);
@@ -68,29 +69,47 @@ public class RobotMap {
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		
-		testMotor1 = new CANTalon(4); //PWM
-		testMotor2 = new CANTalon(5);
-		testMotor3 = new CANTalon(6);
-		testMotor4 = new CANTalon(7);
+		testMotor1 = new CANTalon(15); //PWM //lift motor1
+		testMotor2 = new CANTalon(16);
+		testMotor3 = new CANTalon(17); //lift motor2
+		testMotor4 = new CANTalon(18);
 		
 		testRelay1 = new Relay(0, Relay.Direction.kBoth); //Relay
 		testRelay2 = new Relay(1, Relay.Direction.kBoth);
 		testRelay3 = new Relay(2, Relay.Direction.kBoth);
 		testRelay4 = new Relay(3, Relay.Direction.kBoth);
-		
-		Compressor = new Compressor(); //default PCM CAN ID
-		testSolenoid1 = new DoubleSolenoid(0,1);
-		testSolenoid2 = new DoubleSolenoid(2,3);
-		testSolenoid3 = new DoubleSolenoid(4,5);
-		testSolenoid4 = new DoubleSolenoid(6,7);
-		
-		encoder1 = new Encoder (0,1); //PWM
-		encoder2 = new Encoder (2,3);
-		encoder3 = new Encoder (4,5);
-		encoder4 = new Encoder (6,7);
-		
-		limSwitch1 = new DigitalInput(8); //DIO
+
+		limSwitch1 = new DigitalInput(0); //DIO
+		limSwitch2 = new DigitalInput(1); //DIO
+		limSwitch3 = new DigitalInput(2); //DIO
+		limSwitch4 = new DigitalInput(3); //DIO
 		
 		potentiometer = new AnalogInput(1); //AIO
+		
+		
+	/**	encoder1 = new Encoder(0, 1, false, EncodingType.k4X);
+		encoder1.setDistancePerPulse(1.0);
+		encoder1.setPIDSourceParameter(PIDSourceParameter.kRate);
+		encoder1.startLiveWindowMode();
+		LiveWindow.addSensor("Drivetrain", "frontLeftEncoder", encoder1);
+	        
+		encoder2 = new Encoder(2, 3, true, EncodingType.k4X);
+		encoder2.setDistancePerPulse(1.0);
+		encoder2.setPIDSourceParameter(PIDSourceParameter.kRate);
+		encoder2.reset();
+		LiveWindow.addSensor("Drivetrain", "frontRightEncoder", encoder2);
+	        
+		encoder3 = new Encoder(4, 5, false, EncodingType.k4X);
+		encoder3.setDistancePerPulse(1.0);
+		encoder3.setPIDSourceParameter(PIDSourceParameter.kRate);
+		encoder3.startLiveWindowMode();
+		LiveWindow.addSensor("Drivetrain", "rearLeftEncoder", encoder3);
+	        
+		encoder4 = new Encoder(6, 7, true, EncodingType.k4X);
+		encoder4.setDistancePerPulse(1.0);
+		encoder4.setPIDSourceParameter(PIDSourceParameter.kRate);
+		encoder4.startLiveWindowMode();
+		LiveWindow.addSensor("Drivetrain", "rearRightRencoder", encoder4); **/
+		
 	}
 }

@@ -4,6 +4,7 @@ import org.usfirst.frc.team4188.robot.CorpsLog;
 import org.usfirst.frc.team4188.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -28,8 +29,11 @@ public class SensorDisplay extends Command {
     	
     	Robot.drivetrain.getEncoderValues();
     	
-    	CorpsLog.log("Limit Switch", Robot.drivetrain.getLimSwitch(), true, false);
-    	CorpsLog.log("Potentiometer", Robot.drivetrain.getPotentiometerValue(), true, false);
+    	SmartDashboard.putBoolean("Limit Switch", Robot.drivetrain.getLimSwitch());
+    	SmartDashboard.putNumber("Potentiometer", Robot.drivetrain.getPotentiometerValue());
+    	SmartDashboard.putBoolean("Front Lim Switch", Robot.motors.isLim1Hit());
+    	SmartDashboard.putBoolean("Claw Grab Lim Switch", Robot.motors.isLim2Hit());
+    	SmartDashboard.putBoolean("Claw Drop Lim Switch", Robot.motors.isLim3Hit());
     }
 
     // Make this return true when this Command no longer needs to run execute()
