@@ -74,8 +74,8 @@ public class OI {
     
     public OI() {
     	//joysticks and joystick buttons
-    	pilotJoystick = new CorpsJoystick(0,4,12,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0,-12.0,12.0,2,1.0);
-        copilotJoystick = new CorpsJoystick(1,3,11,-5,5,1,1,-12.0,12.0,1,1.0,-12.0,12.0,2,1.0);
+    	pilotJoystick = new CorpsJoystick(0,4,12,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0);
+        copilotJoystick = new CorpsJoystick(1,3,11,-5,5,1,1,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0);
 	
         pilot1 = new JoystickButton(pilotJoystick, 1);
         pilot2 = new JoystickButton(pilotJoystick, 2);
@@ -102,25 +102,29 @@ public class OI {
         copilot10 = new JoystickButton(copilotJoystick, 10);
         copilot11 = new JoystickButton(copilotJoystick, 11);
         
-        copilot2.whileHeld(new RunMotor1());
-        copilot3.whileHeld(new RunMotor2());
+        copilot2.whileHeld(new RunLiftMotor());
+        copilot2.whenReleased(new StopLiftMotor());
+        copilot3.whileHeld(new RunClawMotor());
+        copilot3.whenReleased(new StopClawMotor());
         copilot4.whileHeld(new RunMotor3());
         copilot5.whileHeld(new RunMotor4());
         
-        pilot5.whenPressed(new AutomaticGrab());
-        pilot3.whenPressed(new AutomaticDrop());
+        copilot4.whenPressed(new AutomaticGrab());
+        copilot5.whenPressed(new AutomaticStack());
+        copilot7.whenPressed(new LiftDown());
+        copilot8.whenPressed(new AutomaticGrabExit());
         
-        pilot11.whenPressed(new Relay1Forward());
-        pilot12.whileHeld(new Relay1Backward());
+        pilot11.whileHeld(new SlowAccelerateOn());
+        pilot11.whenReleased(new SlowAccelerateOff());
+        
+        pilot1.whenPressed(new Relay1Forward()); //camera lights
         copilot6.whileHeld(new Relay2Forward());
-        copilot7.whileHeld(new Relay2Backward());
-        copilot8.whileHeld(new Relay3Forward());
         copilot9.whileHeld(new Relay3Backward());
         copilot11.whileHeld(new Relay4Forward());
         copilot10.whileHeld(new Relay4Backward());
         
         //smartdashboard buttons
-  /**      button1 = new InternalButton();
+  /**   button1 = new InternalButton();
         
         SmartDashboard.putData("Relay 1", button1);
         

@@ -20,6 +20,8 @@ public class Motors extends Subsystem {
 	DigitalInput lim2 = RobotMap.limSwitch2;
 	DigitalInput lim3 = RobotMap.limSwitch3;
 	DigitalInput lim4 = RobotMap.limSwitch4;
+	DigitalInput lim5 = RobotMap.limSwitch5;
+	DigitalInput lim6 = RobotMap.limSwitch6;
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -49,20 +51,28 @@ public class Motors extends Subsystem {
     	motor4.set(y);
     }
     
-    public boolean isLim1Hit (){
+    public boolean isLim1Hit (){ //front hit
     	return lim1.get();
     }
 
-    public boolean isLim2Hit (){
+    public boolean isLim2Hit (){ //close claw hit
     	return lim2.get();
     }
     
-    public boolean isLim3Hit (){
+    public boolean isLim3Hit (){ //open claw hit
     	return lim3.get();
     }
 
     public boolean isLim4Hit (){
     	return lim4.get();
+    }
+    
+    public boolean isLim5Hit (){
+    	return lim5.get();
+    }
+    
+    public boolean isLim6Hit (){
+    	return !lim6.get();
     }
     
     public void stopMotor1(){
@@ -75,6 +85,10 @@ public class Motors extends Subsystem {
 
     public void stopMotor3(){
     	motor3.set(0);
+    }
+    
+    public double getMotor1(){
+    	return motor1.get();
     }
 
     public void stopMotor4(){

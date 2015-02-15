@@ -27,13 +27,23 @@ public class SensorDisplay extends Command {
 //    	CorpsLog.log("Rear Right Encoder", Robot.drivetrain.getEncoderRR(), true, false);
 //    	CorpsLog.log("Rear Left Encoder", Robot.drivetrain.getEncoderRL(), true, false);
     	
+    	if(!Robot.motors.isLim3Hit()) {
+    		
+    		if (-Robot.oi.copilotJoystick.getY() > 0) Robot.motors.stopMotor2();//hit claw side max
+    	}
+    	
+    	
+    	
     	Robot.drivetrain.getEncoderValues();
     	
-    	SmartDashboard.putBoolean("Limit Switch", Robot.drivetrain.getLimSwitch());
-    	SmartDashboard.putNumber("Potentiometer", Robot.drivetrain.getPotentiometerValue());
+    	//SmartDashboard.putBoolean("Limit Switch", Robot.drivetrain.getLimSwitch());
+    //	SmartDashboard.putNumber("Potentiometer", Robot.drivetrain.getPotentiometerValue());
     	SmartDashboard.putBoolean("Front Lim Switch", Robot.motors.isLim1Hit());
     	SmartDashboard.putBoolean("Claw Grab Lim Switch", Robot.motors.isLim2Hit());
     	SmartDashboard.putBoolean("Claw Drop Lim Switch", Robot.motors.isLim3Hit());
+    	SmartDashboard.putBoolean("Bottom Lim Switch", Robot.motors.isLim4Hit());
+    	SmartDashboard.putBoolean("Top Lim Switch", Robot.motors.isLim5Hit());
+    	SmartDashboard.putBoolean("Claw Grab 2 Lim Switch Switch", Robot.motors.isLim6Hit());
     }
 
     // Make this return true when this Command no longer needs to run execute()

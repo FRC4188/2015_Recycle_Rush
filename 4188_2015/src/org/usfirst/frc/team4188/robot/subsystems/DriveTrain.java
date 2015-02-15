@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem{
 	
 	DigitalInput limSwitch = RobotMap.limSwitch1;
 	
-	AnalogInput potentiometer = RobotMap.potentiometer;
+	//AnalogInput potentiometer = RobotMap.potentiometer;
 	
 	public void init (){
 		gyro.reset();
@@ -44,7 +44,7 @@ public class DriveTrain extends Subsystem{
     }
 	
 	public void driveWithJoystick(double x, double y, double twist, double throttle, double direction){
-        robotDrive.mecanumDrive_Cartesian(0.5*x*throttle, -0.5*y*throttle, 0.5*twist*throttle, direction);
+        robotDrive.mecanumDrive_Cartesian(x*throttle, -y*throttle, 0.5*twist*throttle, direction);
     }
 	
 	public void slowAccelerate(){
@@ -55,10 +55,10 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public void fastAccelerate(){
-		frontLeft.setVoltageRampRate(10);
-		frontRight.setVoltageRampRate(10);
-		rearLeft.setVoltageRampRate(10);
-		rearRight.setVoltageRampRate(10);
+		frontLeft.setVoltageRampRate(100);
+		frontRight.setVoltageRampRate(100);
+		rearLeft.setVoltageRampRate(100);
+		rearRight.setVoltageRampRate(100);
 	}
 	
 	public double getEncoderFR(){
@@ -106,7 +106,7 @@ public class DriveTrain extends Subsystem{
 		return limSwitch.get();
 	}
 	
-	public int getPotentiometerValue(){
-		return potentiometer.getValue();
-	}
+	//public int getPotentiometerValue(){
+	//	return potentiometer.getValue();
+	//}
 }

@@ -43,6 +43,8 @@ public class RobotMap {
 	public static DigitalInput limSwitch2;
 	public static DigitalInput limSwitch3;
 	public static DigitalInput limSwitch4;
+	public static DigitalInput limSwitch5;
+	public static DigitalInput limSwitch6;
 	
 	public static AnalogInput potentiometer;
 	
@@ -83,8 +85,10 @@ public class RobotMap {
 		limSwitch2 = new DigitalInput(1); //DIO
 		limSwitch3 = new DigitalInput(2); //DIO
 		limSwitch4 = new DigitalInput(3); //DIO
+		limSwitch5 = new DigitalInput(4); //DIO
+		limSwitch6 = new DigitalInput(5); //DIO
 		
-		potentiometer = new AnalogInput(1); //AIO
+	//	potentiometer = new AnalogInput(1); //AIO
 		
 		
 	/**	encoder1 = new Encoder(0, 1, false, EncodingType.k4X);

@@ -1,21 +1,17 @@
 package org.usfirst.frc.team4188.robot.commands;
 
 import org.usfirst.frc.team4188.robot.Robot;
-import org.usfirst.frc.team4188.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutomaticDrop extends Command {
+public class StopClawMotor extends Command {
 
-	private boolean doneYet1;
-	
-    public AutomaticDrop() {
+    public StopClawMotor() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	doneYet1 = false;
     }
 
     // Called just before this Command runs the first time
@@ -24,21 +20,16 @@ public class AutomaticDrop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!doneYet1){
-    		if(Robot.motors.isLim3Hit()) Robot.motors.runMotor2(-0.3);
-    		else Robot.motors.stopMotor2();
-    		doneYet1 = true;
-    	}
+    	Robot.motors.stopMotor2();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return doneYet1;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	doneYet1 = false;
     }
 
     // Called when another command which requires one or more of the same
