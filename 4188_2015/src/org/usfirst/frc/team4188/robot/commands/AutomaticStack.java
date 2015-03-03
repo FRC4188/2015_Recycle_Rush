@@ -46,12 +46,10 @@ public class AutomaticStack extends Command {
     	
     	//CHANGE TIMERS TO ENCODERS
     	
-    	boolean b = AutomaticGrabExit.doneYetAutoGrab;
-    	
     	//drive forward till next tote is hit
     	if(!doneYet1){
     		CorpsLog.log("Automatic Stack", "Moving Forward", false, true);
-    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.3, 0, RobotMap.drivetraingyro.getAngle()*.03);
+    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
     		else {
     			Robot.drivetrain.autoDrive(0, 0, 0, 0);
         		doneYet1 = true;
@@ -84,7 +82,7 @@ public class AutomaticStack extends Command {
     		}
     		else{
     			CorpsLog.log("Automatic Stack", "", false, true);
-    			if(timer2.get() < 1.5) Robot.drivetrain.autoDrive(0, 0.3, 0, RobotMap.drivetraingyro.getAngle()*.03);
+    			if(timer2.get() < 2) Robot.drivetrain.autoDrive(0, 0.3, 0, RobotMap.drivetraingyro.getAngle()*.03);
     			else {
     				Robot.drivetrain.autoDrive(0, 0, 0, 0);
     				doneYet4 = true;
@@ -106,7 +104,7 @@ public class AutomaticStack extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (doneYet1 && doneYet2 && doneYet3 && doneYet4 && doneYet5) || b;
+        return (doneYet1 && doneYet2 && doneYet3 && doneYet4 && doneYet5) || RobotMap.exitAuto;
     }
 
     // Called once after isFinished returns true
@@ -117,7 +115,7 @@ public class AutomaticStack extends Command {
     	doneYet4 = false;
     	doneYet5 = false;
     	
-    	b = false;
+    	RobotMap.exitAuto = false;
     	
     	timer.reset();
     	isTimerStarted = false;

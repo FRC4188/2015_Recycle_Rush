@@ -70,7 +70,8 @@ public class OI {
     
     //Smart Dashboard buttons
     
-    InternalButton button1;
+//    InternalButton button1;
+//    InternalButton button2;
     
     public OI() {
     	//joysticks and joystick buttons
@@ -118,19 +119,19 @@ public class OI {
         pilot11.whenReleased(new SlowAccelerateOff());
         
         pilot1.whenPressed(new Relay1Forward()); //camera lights
-        copilot6.whileHeld(new Relay2Forward());
-        copilot9.whileHeld(new Relay3Backward());
-        copilot11.whileHeld(new Relay4Forward());
-        copilot10.whileHeld(new Relay4Backward());
+//        pilot3.whileHeld(new RunLiftMotor());
+//        pilot3.whenReleased(new StopLiftMotor());
+//        pilot5.whileHeld(new RunClawMotor());
+//        pilot5.whenReleased(new StopClawMotor());
         
-        //smartdashboard buttons
-  /**   button1 = new InternalButton();
+    /**    //smartdashboard buttons
+        button1 = new InternalButton();
+        SmartDashboard.putData("Autonomous Drive Forward", button1);
+        button1.whenPressed(new AutonomousSet(1));
         
-        SmartDashboard.putData("Relay 1", button1);
-        
-        button1.whenPressed(new Relay1Forward());
-        
-        SmartDashboard.putData(new Relay1Forward()); **/
+        button2 = new InternalButton();
+        SmartDashboard.putData("Autonomous Gargbage Can + Tote Forward", button2);
+        button2.whenPressed(new AutonomousSet(2)); **/
     }
     
     public Joystick getpilotJoystick() {

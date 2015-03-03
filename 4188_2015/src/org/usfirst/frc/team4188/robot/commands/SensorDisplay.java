@@ -44,6 +44,9 @@ public class SensorDisplay extends Command {
     	SmartDashboard.putBoolean("Bottom Lim Switch", Robot.motors.isLim4Hit());
     	SmartDashboard.putBoolean("Top Lim Switch", Robot.motors.isLim5Hit());
     	SmartDashboard.putBoolean("Claw Grab 2 Lim Switch Switch", Robot.motors.isLim6Hit());
+    	
+    	if(!Robot.motors.isLim1Hit() && ! Robot.motors.isLim2Hit() && !Robot.motors.isLim6Hit()) Robot.relays.runRelay1Forward();
+    	else Robot.relays.stopRelay1();
     }
 
     // Make this return true when this Command no longer needs to run execute()

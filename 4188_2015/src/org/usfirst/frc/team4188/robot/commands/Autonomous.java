@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Autonomous extends CommandGroup {
     
+	//int state;
+	
     public  Autonomous() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -25,7 +27,22 @@ public class Autonomous extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+//    	stateVal = AutonomousSet.stateAuto;
+    	
+//    	if (stateVal == 1){
+    	addSequential(new GarbageCanLift());
     	addSequential(new AutoDrive(6500, -0.8, 1));
     	//addSequential(new AutomaticGrab());
+    	
+//    	}
+    	
+//    	if (stateVal == 2){
+//    		addSequential(new AutomaticGrab());//can we change how much it lifts here? or create two separate classes that close the claw and then move up for GBGCan
+//        	addSequential(new AutoDrive(200, -0.8, 2)); //move right till in front of the yellow tote
+//        	addSequential(new AutoDrive(6500, -0.8, 1)); //move forward till inside the zone
+//    	}
+    	
+    	
+    	
     }
 }

@@ -22,6 +22,8 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
+	public static boolean exitAuto;
+	
 	public static RobotDrive driveBase;
 	public static CANTalon frontLeft;
 	public static CANTalon frontRight;
@@ -45,10 +47,14 @@ public class RobotMap {
 	public static DigitalInput limSwitch4;
 	public static DigitalInput limSwitch5;
 	public static DigitalInput limSwitch6;
+	public static DigitalInput limSwitch7;
+	public static DigitalInput limSwitch8;
 	
 	public static AnalogInput potentiometer;
 	
 	public static void init() {
+		
+		exitAuto = false;
 		
 		drivetraingyro = new Gyro(0); //Analog
 		drivetraingyro.setSensitivity(0.007);
@@ -85,8 +91,10 @@ public class RobotMap {
 		limSwitch2 = new DigitalInput(1); //DIO
 		limSwitch3 = new DigitalInput(2); //DIO
 		limSwitch4 = new DigitalInput(3); //DIO
-		limSwitch5 = new DigitalInput(4); //DIO
-		limSwitch6 = new DigitalInput(5); //DIO
+		limSwitch5 = new DigitalInput(4); //DIO top
+		limSwitch6 = new DigitalInput(5); //DIO bottom
+		limSwitch7 = new DigitalInput(6); //DIO left claw front
+		limSwitch8 = new DigitalInput(7); //DIO right claw front
 		
 	//	potentiometer = new AnalogInput(1); //AIO
 		

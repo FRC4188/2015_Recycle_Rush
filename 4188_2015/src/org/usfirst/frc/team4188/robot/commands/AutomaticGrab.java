@@ -17,8 +17,6 @@ public class AutomaticGrab extends Command {
 	
 	private boolean isTimer3Started;
 	
-	boolean a;
-	
 	Timer timer3;
 	
     public AutomaticGrab() {
@@ -40,13 +38,11 @@ public class AutomaticGrab extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	boolean a = AutomaticGrabExit.doneYetAutoGrab;
-    	
     	doneYet1 = true; 
     	
     	if(doneYet1 && !doneYet2){
     		CorpsLog.log("Automatic Grab", "Moving Forward", false, true);
-    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.3, 0, RobotMap.drivetraingyro.getAngle()*.03);
+    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
     		else {
     			Robot.drivetrain.autoDrive(0, 0, 0, 0);
     			doneYet2 = true;
@@ -83,7 +79,7 @@ public class AutomaticGrab extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (doneYet1 && doneYet2 && doneYet3 && doneYet4) || a;
+        return (doneYet1 && doneYet2 && doneYet3 && doneYet4) || RobotMap.exitAuto;
     }
 
     // Called once after isFinished returns true
@@ -94,7 +90,6 @@ public class AutomaticGrab extends Command {
     	doneYet4 = false;
     	timer3.reset();
     	isTimer3Started = false;
-    	a = false;
     }
 
     // Called when another command which requires one or more of the same

@@ -1,17 +1,18 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Relay4Backward extends Command {
+public class AutonomousSet extends Command {
+	
+public static int state, stateAuto;
 
-    public Relay4Backward() {
+    public AutonomousSet(int State) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	state = State;
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +21,7 @@ public class Relay4Backward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.relays.runRelay4Backward();
+    	stateAuto = state;
     }
 
     // Make this return true when this Command no longer needs to run execute()

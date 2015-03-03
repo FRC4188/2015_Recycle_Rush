@@ -70,11 +70,11 @@ public class AutoDrive extends Command {
 	                ((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) < 25)) twistValue = -0.2; 
 	        
 	        
-	        if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.25*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.25*distance)) Robot.drivetrain.autoDrive(0, speed, twistValue , 0);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.4*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.5*distance)) Robot.drivetrain.autoDrive(0, speed, twistValue , 0);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.7*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.7*distance)) Robot.drivetrain.autoDrive(0, speed, twistValue , 0);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.8*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.9*distance)) Robot.drivetrain.autoDrive(0, speed, twistValue , 0);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -distance)) Robot.drivetrain.autoDrive(0, speed, twistValue , 0);
+	        if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.25*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.25*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.4*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.5*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.7*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.7*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.8*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.9*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
 	        else {                                                                                                                      
 	            Robot.drivetrain.autoDrive(0, 0, 0, 0);
 	            doneYet = true;

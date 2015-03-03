@@ -19,7 +19,7 @@ public class RunClawMotor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.motors.runMotor2WithJoystick(-Robot.oi.copilotJoystick.getY()*Robot.oi.copilotJoystick.getThrottle());
+    	Robot.motors.runMotor2WithJoystick(-Robot.oi.copilotJoystick.getX()*Robot.oi.copilotJoystick.getThrottle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
