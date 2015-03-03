@@ -78,9 +78,11 @@ public class RobotMap {
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		
 		testMotor1 = new CANTalon(15); //PWM //lift motor1
-		testMotor2 = new CANTalon(16);
+		testMotor2 = new CANTalon(16); //claw motor
 		testMotor3 = new CANTalon(17); //lift motor2
 		testMotor4 = new CANTalon(18);
+		
+		testMotor2.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); //magnetic encoder
 		
 		testRelay1 = new Relay(0, Relay.Direction.kBoth); //Relay
 		testRelay2 = new Relay(1, Relay.Direction.kBoth);

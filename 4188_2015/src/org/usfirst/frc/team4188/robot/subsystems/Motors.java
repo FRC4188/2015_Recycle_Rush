@@ -120,5 +120,9 @@ public class Motors extends Subsystem {
     public void runMotor4(double e){
     	motor4.set(e);
     }
+    
+    public double getEncoderClaw(){
+		return motor2.getEncPosition();
+	}
 }
 

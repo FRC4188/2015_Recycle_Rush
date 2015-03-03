@@ -27,13 +27,6 @@ public class SensorDisplay extends Command {
 //    	CorpsLog.log("Rear Right Encoder", Robot.drivetrain.getEncoderRR(), true, false);
 //    	CorpsLog.log("Rear Left Encoder", Robot.drivetrain.getEncoderRL(), true, false);
     	
-    	if(!Robot.motors.isLim3Hit()) {
-    		
-    		if (-Robot.oi.copilotJoystick.getY() > 0) Robot.motors.stopMotor2();//hit claw side max
-    	}
-    	
-    	
-    	
     	Robot.drivetrain.getEncoderValues();
     	
     	//SmartDashboard.putBoolean("Limit Switch", Robot.drivetrain.getLimSwitch());
@@ -47,6 +40,8 @@ public class SensorDisplay extends Command {
     	
     	if(!Robot.motors.isLim1Hit() && ! Robot.motors.isLim2Hit() && !Robot.motors.isLim6Hit()) Robot.relays.runRelay1Forward();
     	else Robot.relays.stopRelay1();
+    	
+    	SmartDashboard.putNumber("Claw Encoder Value", Robot.motors.getEncoderClaw());
     }
 
     // Make this return true when this Command no longer needs to run execute()
