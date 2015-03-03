@@ -11,8 +11,8 @@ import org.usfirst.frc.team4188.robot.RobotMap;
  */
 public class Motors extends Subsystem {
 	
-	CANTalon motor1 = RobotMap.testMotor1;
-	CANTalon motor2 = RobotMap.testMotor2;
+	CANTalon motor1 = RobotMap.testMotor1; //lift
+	CANTalon motor2 = RobotMap.testMotor2; //claw
 	CANTalon motor3 = RobotMap.testMotor3;
 	CANTalon motor4 = RobotMap.testMotor4;
 	
