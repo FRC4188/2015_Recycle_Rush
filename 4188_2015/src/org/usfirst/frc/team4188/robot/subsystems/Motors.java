@@ -37,19 +37,19 @@ public class Motors extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void runMotor1WithJoystick(double y){
+    public void runMotor1WithJoystick(double y){ //lift
     	motor1.set(y);
     }
     
-    public void runMotor2WithJoystick(double y){
+    public void runMotor2WithJoystick(double y){ //claw
     	motor2.set(y);
     }
     
-    public void runMotor3WithJoystick(double y){
+    public void runMotor3WithJoystick(double y){ //not used
     	motor3.set(y);
     }
     
-    public void runMotor4WithJoystick(double y){
+    public void runMotor4WithJoystick(double y){ //not used
     	motor4.set(y);
     }
     
@@ -61,27 +61,27 @@ public class Motors extends Subsystem {
     	return lim2.get();
     }
     
-    public boolean isLim3Hit (){ //open claw hit
+    public boolean isLim3Hit (){ //open claw hardwired
     	return lim3.get();
     }
 
-    public boolean isLim4Hit (){
+    public boolean isLim4Hit (){ //top hardwired
     	return lim4.get();
     }
     
-    public boolean isLim5Hit (){
+    public boolean isLim5Hit (){ //bottom hardwired
     	return lim5.get();
     }
     
-    public boolean isLim6Hit (){
+    public boolean isLim6Hit (){ //close claw hardwired
     	return lim6.get();
     }
     
-    public boolean isLim7Hit (){
+    public boolean isLim7Hit (){ //not used
     	return lim7.get();
     }
     
-    public boolean isLim8Hit (){
+    public boolean isLim8Hit (){ //not used
     	return lim8.get();
     }
     

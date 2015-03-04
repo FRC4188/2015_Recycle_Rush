@@ -48,17 +48,22 @@ public class DriveTrain extends Subsystem{
     }
 	
 	public void slowAccelerate(){
-		frontLeft.setVoltageRampRate(2.5);
-		frontRight.setVoltageRampRate(2.5);
-		rearLeft.setVoltageRampRate(2.5);
-		rearRight.setVoltageRampRate(2.5);
+		double rampRate = 2.5;
+		
+		frontLeft.setVoltageRampRate(rampRate); 
+		frontRight.setVoltageRampRate(rampRate);
+		rearLeft.setVoltageRampRate(rampRate);
+		rearRight.setVoltageRampRate(rampRate);
 	}
 	
 	public void fastAccelerate(){
-		frontLeft.setVoltageRampRate(100);
-		frontRight.setVoltageRampRate(100);
-		rearLeft.setVoltageRampRate(100);
-		rearRight.setVoltageRampRate(100);
+		
+		double rampRate = 100;
+		
+		frontLeft.setVoltageRampRate(rampRate);
+		frontRight.setVoltageRampRate(rampRate);
+		rearLeft.setVoltageRampRate(rampRate);
+		rearRight.setVoltageRampRate(rampRate);
 	}
 	
 	public double getEncoderFR(){

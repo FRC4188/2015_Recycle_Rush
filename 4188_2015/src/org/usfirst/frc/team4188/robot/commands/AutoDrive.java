@@ -10,6 +10,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class AutoDrive extends Command {
+	
+	public static final int MOVE_FORWARD = 1;
+	public static final int MOVE_RIGHT = 2;
+	public static final int MOVE_LEFT = 3;
+	public static final int MOVE_BACKWARD = 4;
 
     private double startFrontLeft;
     private double startFrontRight;
@@ -19,7 +24,7 @@ public class AutoDrive extends Command {
     private double frontLeftDistance;
     private double rearLeftDistance;
     
-    private double twistValue;
+
     private boolean doneYet;
     
     private int distance;
@@ -47,12 +52,14 @@ public class AutoDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-	    if (state == 1){ //move forward
+    	double twistValue = 0.0;
+    	    
+	    if (state == MOVE_FORWARD){ //move forward
 	    	
 	    	SmartDashboard.putNumber("start front left", startFrontLeft);
 	        SmartDashboard.putNumber("start front right", startFrontRight);     
 	       
-	        if (((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) > 5) &&
+	/**        if (((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) > 5) &&
 	                ((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) < 10)) twistValue = 0.05;
 	        if (((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) > 5) &&
 	                ((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) < 10)) twistValue = -0.05;
@@ -68,27 +75,39 @@ public class AutoDrive extends Command {
 	                ((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) < 25)) twistValue = 0.2;
 	        if (((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) > 20) &&
 	                ((Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderFL()) < 25)) twistValue = -0.2; 
+	        **/
+	/**        
+	        if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.25*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.25*distance)) {
+	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        }
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.4*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.5*distance)) {
+	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        }
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.7*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.7*distance)) {
+	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        }
+	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.8*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.9*distance)) {
+	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        }**/
 	        
-	        
-	        if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.25*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.25*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.4*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.5*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.7*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.7*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -.8*distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -.9*distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
-	        else if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -distance) && ((Robot.drivetrain.getEncoderFR() - startFrontRight) > -distance)) Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	    	if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -distance)) {
+	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	        }
 	        else {                                                                                                                      
 	            Robot.drivetrain.autoDrive(0, 0, 0, 0);
 	            doneYet = true;
 	        }
+
 	    }
     
-	    if (state == 2){ //move right, front goes backward, rear goes forward
+	    else if (state == MOVE_RIGHT){ //move right, front goes backward, rear goes forward
 	    	
 	    	SmartDashboard.putNumber("start front right", startFrontRight);
 	        SmartDashboard.putNumber("start rear right", startRearRight);     
 	        
 	        //need to experiment with twist directions
 	       
-	        if (((-Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderRR()) > 5) &&
+	   /**     if (((-Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderRR()) > 5) &&
 	                ((-Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderRR()) < 10)) twistValue = 0.05;
 	        if (((Robot.drivetrain.getEncoderRR() - -Robot.drivetrain.getEncoderFR()) > 5) &&
 	                ((Robot.drivetrain.getEncoderRR() - -Robot.drivetrain.getEncoderFR()) < 10)) twistValue = -0.05;
@@ -104,6 +123,7 @@ public class AutoDrive extends Command {
 	                ((-Robot.drivetrain.getEncoderFR() - Robot.drivetrain.getEncoderRR()) < 25)) twistValue = 0.2;
 	        if (((Robot.drivetrain.getEncoderRR() - -Robot.drivetrain.getEncoderFR()) > 20) &&
 	                ((Robot.drivetrain.getEncoderRR() - -Robot.drivetrain.getEncoderFR()) < 25)) twistValue = -0.2;
+	        **/
 	        
 	        //need to experiment with which ways the encoder values go
 	        
@@ -118,7 +138,7 @@ public class AutoDrive extends Command {
 	        }
 	    }
 	    
-	    if (state == 3){ //move left, front goes backward, rear goes forward
+	    else if (state == MOVE_LEFT){ //move left, front goes backward, rear goes forward
 	    	
 	    	SmartDashboard.putNumber("start front left", startFrontLeft);
 	        SmartDashboard.putNumber("start rear left", startRearLeft);     
@@ -127,7 +147,7 @@ public class AutoDrive extends Command {
 	        frontLeftDistance = -(Robot.drivetrain.getEncoderFL() - startFrontLeft);
 	        rearLeftDistance = Robot.drivetrain.getEncoderRL() - startRearLeft;
 	       
-	        if (((frontLeftDistance - rearLeftDistance) > 5) &&
+	 /**       if (((frontLeftDistance - rearLeftDistance) > 5) &&
 	                ((frontLeftDistance - rearLeftDistance) < 10)) twistValue = 0.05;
 	        if (((rearLeftDistance - frontLeftDistance) > 5) &&
 	                ((rearLeftDistance - frontLeftDistance) < 10)) twistValue = -0.05;
@@ -143,6 +163,7 @@ public class AutoDrive extends Command {
 	                ((frontLeftDistance - rearLeftDistance) < 25)) twistValue = 0.2;
 	        if (((rearLeftDistance - frontLeftDistance) > 20) &&
 	                ((rearLeftDistance - frontLeftDistance) < 25)) twistValue = -0.2;
+	        **/
 	        
 	        //need to experiment with which ways the encoder values go
 	        
@@ -157,12 +178,12 @@ public class AutoDrive extends Command {
 	        }
 	    }
 	    
-	    if (state == 4){ //move backward
+	    if (state == MOVE_BACKWARD){ //move backward
 	    	
 	    	SmartDashboard.putNumber("start rear left", startRearLeft);
 	        SmartDashboard.putNumber("start rear right", startRearRight);     
 	       
-	        if (((Robot.drivetrain.getEncoderRL() - Robot.drivetrain.getEncoderRR()) > 5) &&
+	     /**   if (((Robot.drivetrain.getEncoderRL() - Robot.drivetrain.getEncoderRR()) > 5) &&
 	                ((Robot.drivetrain.getEncoderRL() - Robot.drivetrain.getEncoderRR()) < 10)) twistValue = -0.05;
 	        if (((Robot.drivetrain.getEncoderRR() - Robot.drivetrain.getEncoderRL()) > 5) &&
 	                ((Robot.drivetrain.getEncoderRR() - Robot.drivetrain.getEncoderRL()) < 10)) twistValue = 0.05;
@@ -178,7 +199,7 @@ public class AutoDrive extends Command {
 	                ((Robot.drivetrain.getEncoderRL() - Robot.drivetrain.getEncoderRR()) < 25)) twistValue = -0.2;
 	        if (((Robot.drivetrain.getEncoderRR() - Robot.drivetrain.getEncoderRL()) > 20) &&
 	                ((Robot.drivetrain.getEncoderRR() - Robot.drivetrain.getEncoderRL()) < 25)) twistValue = 0.2;
-	        
+	        **/
 	        
 	        if (((Robot.drivetrain.getEncoderRL()- startRearLeft) < .25*distance) && ((Robot.drivetrain.getEncoderRR() - startRearRight) < .25*distance)) Robot.drivetrain.autoDrive(0, -speed, twistValue , 0);
 	        else if (((Robot.drivetrain.getEncoderRL()- startRearLeft) < .4*distance) && ((Robot.drivetrain.getEncoderRR() - startRearRight) < .5*distance)) Robot.drivetrain.autoDrive(0, -.75*speed, twistValue , 0);

@@ -31,7 +31,7 @@ public class Autonomous extends CommandGroup {
     	
 //    	if (stateVal == 1){
     	addSequential(new GarbageCanLift());
-    	addSequential(new AutoDrive(6500, -0.8, 1));
+    	addSequential(new AutoDrive(6500, -0.8, AutoDrive.MOVE_FORWARD));
     	//addSequential(new AutomaticGrab());
     	
 //    	}
