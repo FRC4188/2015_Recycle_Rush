@@ -107,12 +107,12 @@ public class OI {
         copilot2.whenReleased(new StopLiftMotor());
         copilot3.whileHeld(new RunClawMotor());
         copilot3.whenReleased(new StopClawMotor());
-        copilot4.whileHeld(new RunMotor3());
-        copilot5.whileHeld(new RunMotor4());
+      //  copilot4.whileHeld(new RunMotor3());
+     //   copilot5.whileHeld(new RunMotor4());
         
-        copilot4.whenPressed(new AutomaticGrab());
-        copilot5.whenPressed(new AutomaticStack());
-        copilot7.whenPressed(new LiftDown());
+      //  copilot4.whenPressed(new GoToSweetSpot());
+      //  copilot5.whenPressed(new AutomaticStack());
+        copilot7.whenPressed(new ResetClawLift());
         copilot8.whenPressed(new AutomaticGrabExit());
         
         pilot11.whileHeld(new SlowAccelerateOn());

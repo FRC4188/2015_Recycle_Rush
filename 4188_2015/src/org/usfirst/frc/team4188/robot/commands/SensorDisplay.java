@@ -41,6 +41,9 @@ public class SensorDisplay extends Command {
     	if(!Robot.motors.isLim1Hit() && ! Robot.motors.isLim2Hit() && !Robot.motors.isLim6Hit()) Robot.relays.runRelay1Forward();
     	else Robot.relays.stopRelay1();
     	
+    	SmartDashboard.putBoolean("Claw Max Close Lim Switch", Robot.motors.getClawOpenLim());
+    	SmartDashboard.putBoolean("Claw Max Open Lim Switch", Robot.motors.getClawCloseLim());
+    	
     	SmartDashboard.putNumber("Claw Encoder Value", Robot.motors.getEncoderClaw());
     }
 

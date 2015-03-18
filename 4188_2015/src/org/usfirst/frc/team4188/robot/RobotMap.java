@@ -82,6 +82,9 @@ public class RobotMap {
 		testMotor3 = new CANTalon(17); //lift motor2
 		testMotor4 = new CANTalon(18);
 		
+		//testMotor2.enableLimitSwitch(true, true);
+		//testMotor2.ConfigFwdLimitSwitchNormallyOpen(true);
+		//testMotor2.ConfigRevLimitSwitchNormallyOpen(true);
 		testMotor2.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); //magnetic encoder
 		
 		testRelay1 = new Relay(0, Relay.Direction.kBoth); //Relay

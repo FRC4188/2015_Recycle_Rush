@@ -29,7 +29,7 @@ public class Motors extends Subsystem {
     // here. Call these from Commands.
 
 	public void init(){
-		
+		//motor2.clearStickyFaults();
 	}
 	
     public void initDefaultCommand() {
@@ -124,5 +124,23 @@ public class Motors extends Subsystem {
     public double getEncoderClaw(){
 		return motor2.getEncPosition();
 	}
+    
+    public boolean getClawCloseLim(){
+    	//motor2.get();
+    	return motor2.isFwdLimitSwitchClosed();
+    }
+    
+    public boolean getClawOpenLim(){
+    	return motor2.isRevLimitSwitchClosed();
+    }
+    
+    public boolean getLiftBottomLim(){
+    	return motor1.isFwdLimitSwitchClosed();
+    }
+    
+    public boolean getLiftTopLim(){
+    	return motor1.isRevLimitSwitchClosed();
+    }
+    
 }
 
