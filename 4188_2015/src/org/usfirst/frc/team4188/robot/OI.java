@@ -113,7 +113,7 @@ public class OI {
       //  copilot4.whenPressed(new GoToSweetSpot());
       //  copilot5.whenPressed(new AutomaticStack());
         copilot7.whenPressed(new ResetClawLift());
-        copilot8.whenPressed(new AutomaticGrabExit());
+        copilot10.whenPressed(new GoToSweetSpot());
         
         pilot11.whileHeld(new SlowAccelerateOn());
         pilot11.whenReleased(new SlowAccelerateOff());
