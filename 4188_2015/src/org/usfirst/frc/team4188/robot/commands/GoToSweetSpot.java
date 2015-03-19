@@ -14,15 +14,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GoToSweetSpot extends Command {
 
 	boolean doneYet1, doneYet2, isTimerStarted;
-	Timer timer;
+	private Timer timer;
 	
     public GoToSweetSpot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	doneYet1 = false;
     	doneYet2 = false;
-    	isTimerStarted = false;
-    	timer = new Timer();
+//    	isTimerStarted = false;
+//    	timer = new Timer();
     }
 
     // Called just before this Command runs the first time
@@ -33,34 +33,23 @@ public class GoToSweetSpot extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	int SWEET_SPOT = 3; //set sweet spot number for time in seconds
+    	double SWEET_SPOT = 3; //set sweet spot number for time in seconds
     	SmartDashboard.putBoolean("doneYet1", doneYet1);
     	SmartDashboard.putBoolean("doneYet2", doneYet2);
+//		SmartDashboard.putBoolean("Sweet Spot Timer Started", isTimerStarted);
+//		SmartDashboard.putNumber("Sweet Spot Timer Value", timer.get());
     	
     	if(!doneYet1){
     		if(!Robot.motors.getClawCloseLim()){
-    			Robot.motors.runMotor2(-0.3);
+    			Robot.motors.runMotor2(0.5); //positive to close
     		}
     		else {
     			Robot.motors.stopMotor2();
     			doneYet1 = true;
-    			
     		}
     	}
     	
-    	if(doneYet1 && !doneYet2){
-    		if(!isTimerStarted) {
-    			timer.start();
-    			isTimerStarted = true;
-    		}
-    		else{
-    			if(timer.get() < SWEET_SPOT) Robot.motors.runMotor2(0.5); //positive means close
-    			else {
-    				Robot.motors.stopMotor1();
-    				doneYet2 = true;
-    			}
-    		}
-    	}
+    	doneYet2 = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -72,6 +61,8 @@ public class GoToSweetSpot extends Command {
     protected void end() {
     	doneYet1 = false;
     	doneYet2 = false;
+//    	isTimerStarted = false;
+//    	timer.reset();
     }
 
     // Called when another command which requires one or more of the same
