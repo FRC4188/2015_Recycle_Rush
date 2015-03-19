@@ -5,9 +5,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4188.robot.commands.Autonomous;
+import org.usfirst.frc.team4188.robot.commands.GoForwardAutonomous;
+import org.usfirst.frc.team4188.robot.commands.GoRightGoForwardAutonomous;
 import org.usfirst.frc.team4188.robot.commands.Relay1Forward;
 import org.usfirst.frc.team4188.robot.commands.SensorDisplay;
 import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
@@ -25,7 +28,9 @@ public class Robot extends IterativeRobot {
 
 
     Command autonomousCommand;
+    SendableChooser autoChooser;
     Command sensors;
+    
 	
 	public static DriveTrain drivetrain;
 	public static OI oi;
@@ -43,13 +48,21 @@ public class Robot extends IterativeRobot {
 		drivetrain = new DriveTrain();
 		motors = new Motors();
 		relays = new Relays();
+		autoChooser = new SendableChooser();
 		
 		motors.init();
 	    drivetrain.init();
 	    relays.init();
 	    
+	    
         autonomousCommand = new Autonomous();
         sensors = new SensorDisplay();
+        
+        
+        autoChooser.addDefault("Pick up Garbage Can and move ", new GoForwardAutonomous() );
+        autoChooser.addDefault("Pick up Garbage Can and Strafe", new GoRightGoForwardAutonomous() );
+        SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+       
     }
 	
 	public void disabledPeriodic() {
@@ -58,8 +71,11 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	autonomousCommand = (Command) autoChooser.getSelected();
+    	autonomousCommand.start();
     	sensors.start();
         if (autonomousCommand != null) autonomousCommand.start();
+        
     }
 
     /**

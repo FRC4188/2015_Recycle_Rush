@@ -33,7 +33,7 @@ public class DriveTrain extends Subsystem{
 		
 	/**	encoderFrontRight.reset();
 	    encoderFrontLeft.reset();
-	    encoderRearRight.reset();
+	    encoderRearRight.reset(); 
 	    encoderRearLeft.reset();**/
 	}
 	 
@@ -94,7 +94,7 @@ public class DriveTrain extends Subsystem{
         SmartDashboard.putNumber("rearLeftEncoder distance", rearLeft.getEncPosition());
         SmartDashboard.putNumber("rearRightEncoder distance", rearRight.getEncPosition());
  }
-	
+
 	/**public void resetEncoders()
     {
 		encoderFrontRight.reset();
