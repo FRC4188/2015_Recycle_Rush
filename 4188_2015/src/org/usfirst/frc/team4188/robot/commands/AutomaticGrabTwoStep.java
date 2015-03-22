@@ -49,6 +49,7 @@ public class AutomaticGrabTwoStep extends Command {
     		else {
     			Robot.motors.stopMotor2();
     			doneYet1 = true;
+    			
     		}
     	}
     	

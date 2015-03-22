@@ -25,8 +25,9 @@ public class GoRightGoForwardAutonomous extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	addSequential(new GarbageCanLift ());
     	addSequential(new AutomaticGrab());//can we change how much it lifts here? or create two separate classes that close the claw and then move up for GBGCan
-    	addSequential(new AutoDrive(200, -0.8, 2)); //move right till in front of the yellow tote
+    	addSequential(new AutoDrive(200, -0.8, 2)); //move right till in front of the yellow tote.
     	addSequential(new AutoDrive(6500, -0.8, 1)); //move forward till inside the zone
     }
 }

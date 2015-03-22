@@ -29,5 +29,9 @@ public class GoForwardAutonomous extends CommandGroup {
     	
     	addSequential (new GarbageCanLift());
     	addSequential (new AutoDrive(6500, -0.8, AutoDrive.MOVE_FORWARD));
+    
+    
     }
+    
+    
 }
