@@ -28,9 +28,7 @@ public class ManualDrive extends Command {
     	//if(Math.abs(pilotStick.getX()*pilotStick.getThrottle()) > 0.3 || Math.abs(pilotStick.getY()*pilotStick.getThrottle()) > 0.3 || Math.abs(pilotStick.getTwist()*pilotStick.getThrottle()) > 0.3) Robot.drivetrain.slowAccelerate();
     	//else Robot.drivetrain.fastAccelerate();
     	
-    	//CHANGE IN COMPETITION Y VALUE JOYSTICK FROM NEGATIVE TO POSITIVE
-    	
-    	Robot.drivetrain.driveWithJoystick(pilotStick.getX(), -pilotStick.getY(), pilotStick.getTwist(), pilotStick.getThrottle(), RobotMap.drivetraingyro.getAngle()*.03);
+    	Robot.drivetrain.driveWithJoystick(pilotStick.getX(), pilotStick.getY(), pilotStick.getTwist(), pilotStick.getThrottle(), RobotMap.drivetraingyro.getAngle()*.03);
     }
 
     // Make this return true when this Command no longer needs to run execute()
