@@ -28,5 +28,7 @@ public class GoRightGoForwardAutonomous extends CommandGroup {
     	addSequential(new GarbageCanLift ());
     	addSequential(new AutoDrive(200, -0.8, 2)); //move right till in front of the yellow tote.
     	addSequential(new AutoDrive(6500, -0.8, 1)); //move forward till inside the zone
+    	//addSequential(new AutoDrive(6500,-0.8, AutoDrive.MOVE_FORWARD)); // confused here what is the difference between AutoDrive.moveforward and 1??? Why two different codes to do the same task.
+    	
     }
 }
