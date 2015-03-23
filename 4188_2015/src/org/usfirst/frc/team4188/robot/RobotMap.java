@@ -56,8 +56,8 @@ public class RobotMap {
 		
 		exitAuto = false;
 		
-		drivetraingyro = new Gyro(0); //Analog
-		drivetraingyro.setSensitivity(0.007);
+		//drivetraingyro = new Gyro(0); //Analog
+		//drivetraingyro.setSensitivity(0.007);
 		
 		frontLeft = new CANTalon(11); 
 		frontRight = new CANTalon(12);
