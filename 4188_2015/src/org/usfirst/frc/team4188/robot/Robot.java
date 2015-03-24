@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4188.robot.commands.Autonomous;
 import org.usfirst.frc.team4188.robot.commands.GoForwardAutonomous;
+import org.usfirst.frc.team4188.robot.commands.GoForwardWithToteAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoRightGoForwardAutonomous;
 import org.usfirst.frc.team4188.robot.commands.Relay1Forward;
 import org.usfirst.frc.team4188.robot.commands.SensorDisplay;
@@ -59,8 +60,9 @@ public class Robot extends IterativeRobot {
         sensors = new SensorDisplay();
         
         
-        autoChooser.addDefault("Pick up Garbage Can and move ", new GoForwardAutonomous() );
-        autoChooser.addDefault("Pick up Garbage Can and Strafe", new GoRightGoForwardAutonomous() );
+        autoChooser.addDefault("Pick up Garbage Can and Move Forward", new GoForwardAutonomous() );
+        autoChooser.addDefault("Pick up Garbage Can and Move Forward With Tote", new GoRightGoForwardAutonomous() );
+        autoChooser.addDefault("Pick up Tote and Move Forward", new GoForwardWithToteAutonomous() );
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
        
     }
