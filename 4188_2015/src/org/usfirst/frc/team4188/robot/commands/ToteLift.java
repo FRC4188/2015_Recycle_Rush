@@ -34,7 +34,7 @@ public class ToteLift extends Command {
 		}
 		else{
 			CorpsLog.log("Automatic Stack", "Moving Lift Up", false, true);
-			if(timer.get() < 0.5) Robot.motors.runMotor1(-0.75); //negative means it goes up
+			if(timer.get() < 1.5) Robot.motors.runMotor1(-0.75); //negative means it goes up
 			else {
 				Robot.motors.stopMotor1();
 				doneYet = true;
