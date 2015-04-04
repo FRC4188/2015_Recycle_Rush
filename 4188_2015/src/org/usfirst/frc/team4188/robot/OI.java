@@ -118,7 +118,8 @@ public class OI {
         pilot11.whileHeld(new SlowAccelerateOn());
         pilot11.whenReleased(new SlowAccelerateOff());
         
-        pilot1.whenPressed(new Relay1Forward()); //camera lights
+        pilot9.whileHeld(new Relay1Forward()); //window motor
+        pilot11.whileHeld(new Relay1Backward()); //window motor
 //        pilot3.whileHeld(new RunLiftMotor());
 //        pilot3.whenReleased(new StopLiftMotor());
 //        pilot5.whileHeld(new RunClawMotor());
