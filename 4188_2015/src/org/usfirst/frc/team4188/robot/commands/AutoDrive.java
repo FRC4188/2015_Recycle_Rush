@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
- */
+*
+*/
 public class AutoDrive extends Command {
 	
 	public static final int MOVE_FORWARD = 1;
@@ -16,48 +16,48 @@ public class AutoDrive extends Command {
 	public static final int MOVE_LEFT = 3;
 	public static final int MOVE_BACKWARD = 4;
 
-    private double startFrontLeft;
-    private double startFrontRight;
-    private double startRearLeft;
-    private double startRearRight;
-    
-    private double frontLeftDistance;
-    private double rearLeftDistance;
-    
+   private double startFrontLeft;
+   private double startFrontRight;
+   private double startRearLeft;
+   private double startRearRight;
 
-    private boolean doneYet;
-    
-    private int distance;
-    private double speed;
-    private int state;
+   private double frontLeftDistance;
+   private double rearLeftDistance;
+
+
+   private boolean doneYet;
+
+   private int distance;
+   private double speed;
+   private int state;
 	
-    public AutoDrive(int Distance, double Speed, int State) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	distance = Distance;
-    	speed = Speed;
-    	state = State;
-    }
+   public AutoDrive(int Distance, double Speed, int State) {
+       // Use requires() here to declare subsystem dependencies
+       // eg. requires(chassis);
+   	distance = Distance;
+   	speed = Speed;
+   	state = State;
+   }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
+   // Called just before this Command runs the first time
+   protected void initialize() {
 //    	Robot.drivetrain.resetEncoders();
 
-       startFrontLeft = Robot.drivetrain.getEncoderFL();
-       startFrontRight = Robot.drivetrain.getEncoderFR();
-       startRearLeft = Robot.drivetrain.getEncoderRL();
-       startRearRight = Robot.drivetrain.getEncoderRR();
-    }
+      startFrontLeft = Robot.drivetrain.getEncoderFL();
+      startFrontRight = Robot.drivetrain.getEncoderFR();
+      startRearLeft = Robot.drivetrain.getEncoderRL();
+      startRearRight = Robot.drivetrain.getEncoderRR();
+   }
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	
-    	double twistValue = 0.0;
-    	    
+   // Called repeatedly when this Command is scheduled to run
+   protected void execute() {
+   	
+   	double twistValue = 0.0;
+   	    
 	    if (state == MOVE_FORWARD){ //move forward
 	    	
-	    	SmartDashboard.putNumber("start front left", startFrontLeft);
-	        SmartDashboard.putNumber("start front right", startFrontRight);     
+	    	SmartDashboard.putNumber("start rear left", startRearLeft);
+	        SmartDashboard.putNumber("start rear right", startRearRight);     
 	       
 	/**        if (((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) > 5) &&
 	                ((Robot.drivetrain.getEncoderFL() - Robot.drivetrain.getEncoderFR()) < 10)) twistValue = 0.05;
@@ -90,8 +90,8 @@ public class AutoDrive extends Command {
 	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
 	        }**/
 	        
-	    	if (((Robot.drivetrain.getEncoderFL()- startFrontLeft) > -distance)) {
-	        	Robot.drivetrain.autoDrive(0, speed, 0 , RobotMap.drivetraingyro.getAngle()*0.3);
+	    	if (((Robot.drivetrain.getEncoderRL()- startRearLeft) < distance)) {
+	        	Robot.drivetrain.autoDrive(0, -speed, 0 ,0);
 	        }
 	        else {                                                                                                                      
 	            Robot.drivetrain.autoDrive(0, 0, 0, 0);
@@ -99,7 +99,7 @@ public class AutoDrive extends Command {
 	        }
 
 	    }
-    
+
 	    else if (state == MOVE_RIGHT){ //move right, front goes backward, rear goes forward
 	    	
 	    	SmartDashboard.putNumber("start front right", startFrontRight);
@@ -211,21 +211,21 @@ public class AutoDrive extends Command {
 	            doneYet = true;
 	        }
 	    }
-    
-    }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return doneYet;
-    }
+   }
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	doneYet = false;
-    }
+   // Make this return true when this Command no longer needs to run execute()
+   protected boolean isFinished() {
+       return doneYet;
+   }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+   // Called once after isFinished returns true
+   protected void end() {
+   	doneYet = false;
+   }
+
+   // Called when another command which requires one or more of the same
+   // subsystems is scheduled to run
+   protected void interrupted() {
+   }
 }
