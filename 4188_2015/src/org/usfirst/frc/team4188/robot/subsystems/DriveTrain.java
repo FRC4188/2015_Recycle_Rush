@@ -17,7 +17,7 @@ public class DriveTrain extends Subsystem{
 	CANTalon frontRight = RobotMap.frontRight;
 	CANTalon rearLeft = RobotMap.rearLeft;
 	CANTalon rearRight = RobotMap.rearRight;
-	Gyro gyro = RobotMap.drivetraingyro;
+	//Gyro gyro = RobotMap.drivetraingyro;
 	
 /**	Encoder encoderFrontRight = RobotMap.encoder1;
 	Encoder encoderFrontLeft = RobotMap.encoder2;
@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem{
 	//AnalogInput potentiometer = RobotMap.potentiometer;
 	
 	public void init (){
-		gyro.reset();
+		//gyro.reset();
 		
 	/**	encoderFrontRight.reset();
 	    encoderFrontLeft.reset();
@@ -83,7 +83,7 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public void getEncoderValues(){        
-        SmartDashboard.putNumber("gyro",gyro.getAngle());
+      //  SmartDashboard.putNumber("gyro",gyro.getAngle());
 //        SmartDashboard.putNumber("frontLeftEncoder distance", encoderFrontLeft.getDistance());
 //        SmartDashboard.putNumber("frontRightEncoder distance", encoderFrontRight.getDistance());
 //        SmartDashboard.putNumber("rearLeftEncoder distance", encoderRearLeft.getDistance());
