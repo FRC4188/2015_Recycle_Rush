@@ -31,6 +31,10 @@ public class RobotMap {
 	public static CANTalon rearRight;
 	public static Gyro drivetraingyro;
 	
+	public static CANJaguar canBurglar;
+	public static DigitalInput CanBurglarMax;
+	public static DigitalInput CanBurglarMin;
+	
 	public static CANTalon testMotor1;
 	public static CANTalon testMotor2;
 	public static CANTalon testMotor3;
@@ -82,6 +86,7 @@ public class RobotMap {
 		testMotor3 = new CANTalon(17); //lift motor2
 		testMotor4 = new CANTalon(18);
 		
+		
 		//testMotor2.enableLimitSwitch(true, true);
 		//testMotor2.ConfigFwdLimitSwitchNormallyOpen(true);
 		//testMotor2.ConfigRevLimitSwitchNormallyOpen(true);
@@ -100,6 +105,12 @@ public class RobotMap {
 		limSwitch6 = new DigitalInput(5); //DIO bottom
 		limSwitch7 = new DigitalInput(6); //DIO left claw front
 		limSwitch8 = new DigitalInput(7); //DIO right claw front
+		
+		
+		CanBurglarMax = new DigitalInput(8);
+		CanBurglarMin = new DigitalInput(9);
+		canBurglar = new CANJaguar(19);
+		
 		
 	//	potentiometer = new AnalogInput(1); //AIO
 		

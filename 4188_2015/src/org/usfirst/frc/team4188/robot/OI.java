@@ -124,6 +124,12 @@ public class OI {
 //        pilot3.whenReleased(new StopLiftMotor());
 //        pilot5.whileHeld(new RunClawMotor());
 //        pilot5.whenReleased(new StopClawMotor());
+        pilot12.whileHeld(new RunCanBurglarMotor());
+        pilot12.whenReleased(new StopCanBurglarMotor());
+        
+        
+        
+        
         
     /**    //smartdashboard buttons
         button1 = new InternalButton();

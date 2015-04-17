@@ -9,11 +9,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4188.robot.commands.Autonomous;
+import org.usfirst.frc.team4188.robot.commands.CanBurgleAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoForwardAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoForwardWithToteAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoRightGoForwardAutonomous;
 import org.usfirst.frc.team4188.robot.commands.Relay1Forward;
 import org.usfirst.frc.team4188.robot.commands.SensorDisplay;
+import org.usfirst.frc.team4188.robot.subsystems.CanBurglar;
 import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4188.robot.subsystems.Motors;
 import org.usfirst.frc.team4188.robot.subsystems.Relays;
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Motors motors;
 	public static Relays relays;
+	public static CanBurglar canburglar;
 
 
     /**
@@ -49,12 +52,13 @@ public class Robot extends IterativeRobot {
 		drivetrain = new DriveTrain();
 		motors = new Motors();
 		relays = new Relays();
+		canburglar = new CanBurglar();
 		autoChooser = new SendableChooser();
 		
 		motors.init();
 	    drivetrain.init();
 	    relays.init();
-	    
+	    canburglar.init();
 	    
         autonomousCommand = new Autonomous();
         sensors = new SensorDisplay();
@@ -63,7 +67,9 @@ public class Robot extends IterativeRobot {
         autoChooser.addDefault("Pick up Garbage Can and Move Forward", new GoForwardAutonomous() );
         autoChooser.addDefault("Pick up Garbage Can and Move Forward With Tote", new GoRightGoForwardAutonomous() );
         autoChooser.addDefault("Pick up Tote and Move Forward", new GoForwardWithToteAutonomous() );
+        autoChooser.addDefault("Can Burglar", new CanBurgleAutonomous());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+        
        
     }
 	
