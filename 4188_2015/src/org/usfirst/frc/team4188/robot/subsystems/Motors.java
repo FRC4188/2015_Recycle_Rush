@@ -69,16 +69,24 @@ public class Motors extends Subsystem {
     	return liftMotor.get();
     }
 
-    public void liftDown(double speed){	// Positive is Down
+    public void liftDown(double speed){			// Positive is Down
 		liftMotor.set(Math.abs(speed));
     }
     
-    public void liftUp(double speed){	// Negative is Up
+    public void liftUp(double speed){			// Negative is Up
 		liftMotor.set(-Math.abs(speed));
     }
     
     public void runLift(double e){
     	liftMotor.set(e);
+    }
+    
+    public void openClaw(double speed){			// Negative is Open
+		clawMotor.set(-Math.abs(speed));
+    }
+    
+    public void closeClaw(double speed){		// Positive is Closed
+		clawMotor.set(Math.abs(speed));
     }
     
     public void runClaw(double e){
@@ -89,7 +97,7 @@ public class Motors extends Subsystem {
 		return clawMotor.getEncPosition();
 	}
     
-    public boolean getClawCloseLim(){    	//motor2.get();
+    public boolean getClawCloseLim(){
     	return clawMotor.isFwdLimitSwitchClosed();
     }
     

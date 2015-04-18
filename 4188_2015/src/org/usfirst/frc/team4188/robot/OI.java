@@ -126,13 +126,13 @@ public class OI {
         pilot12.whenReleased(new CanBurglarStop());
         
         
-//        //smartdashboard buttons
+//        //SmartDashboard buttons
 //        button1 = new InternalButton();
 //        SmartDashboard.putData("Autonomous Drive Forward", button1);
 //        button1.whenPressed(new AutonomousSet(1));
 //        
 //        button2 = new InternalButton();
-//        SmartDashboard.putData("Autonomous Gargbage Can + Tote Forward", button2);
+//        SmartDashboard.putData("Autonomous Garbage Can + Tote Forward", button2);
 //        button2.whenPressed(new AutonomousSet(2));
     }
     
