@@ -1,13 +1,15 @@
 package org.usfirst.frc.team4188.robot.commands;
 
+import org.usfirst.frc.team4188.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GoRightGoForwardAutonomous extends CommandGroup {
+public class CanBurgleAutonomous extends CommandGroup {
     
-    public  GoRightGoForwardAutonomous() {
+    public  CanBurgleAutonomous() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -23,12 +25,13 @@ public class GoRightGoForwardAutonomous extends CommandGroup {
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	
-    	addSequential(new GarbageCanLift ());
-    	addSequential(new AutoDrive(200, -0.8, 2)); //move right till in front of the yellow tote.
-    	//addSequential(new AutoDrive(6500, -0.8, 1)); //move forward till inside the zone
-    	addSequential(new AutoDrive(6500,-0.8, AutoDrive.MOVE_FORWARD)); // confused here what is the difference between AutoDrive.moveforward and 1??? Why two different codes to do the same task.
-    	
+    	// arm.
+
+    	addSequential (new CanBurglarDown());
+    	addSequential (new CanBurglarUpTime(0.5));
+    	addSequential (new CanBurglarStop());
+    	Robot.drivetrain.resetEncoders();
+    	addSequential (new AutoDriveBearingForDistance(0.8, 0.0, 0.0, 48.0));
+    	addSequential (new CanBurglarUp());
     }
 }

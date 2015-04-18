@@ -21,13 +21,15 @@ boolean doneYet;
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+// FIXFIX
+    
+//    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		if(Robot.motors.isLim4Hit()) Robot.motors.runMotor1(0.75); //positive means it goes down
-		else {
-				Robot.motors.stopMotor1();
-				doneYet = true;
-		}
+//		if(Robot.motors.isLim4Hit()) Robot.motors.runMotor1(0.75); //positive means it goes down
+//		else {
+//				Robot.motors.stopMotor1();
+//				doneYet = true;
+//		}
     }
 
     // Make this return true when this Command no longer needs to run execute()

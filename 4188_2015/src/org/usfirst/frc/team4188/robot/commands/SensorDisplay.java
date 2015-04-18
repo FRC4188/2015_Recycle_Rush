@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CorpsLog;
+import org.usfirst.frc.team4188.robot.CHSLog;
 import org.usfirst.frc.team4188.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,15 +31,15 @@ public class SensorDisplay extends Command {
     	
     	//SmartDashboard.putBoolean("Limit Switch", Robot.drivetrain.getLimSwitch());
     //	SmartDashboard.putNumber("Potentiometer", Robot.drivetrain.getPotentiometerValue());
-    	SmartDashboard.putBoolean("Front Lim Switch", Robot.motors.isLim1Hit());
-    	SmartDashboard.putBoolean("Claw Grab Lim Switch", Robot.motors.isLim2Hit());
-    	SmartDashboard.putBoolean("Claw Drop Lim Switch", Robot.motors.isLim3Hit());
-    	SmartDashboard.putBoolean("Bottom Lim Switch", Robot.motors.isLim4Hit());
-    	SmartDashboard.putBoolean("Top Lim Switch", Robot.motors.isLim5Hit());
-    	SmartDashboard.putBoolean("Claw Grab 2 Lim Switch Switch", Robot.motors.isLim6Hit());
-    	
-    	if(!Robot.motors.isLim1Hit() && ! Robot.motors.isLim2Hit() && !Robot.motors.isLim6Hit()) Robot.relays.runRelay1Forward();
-    	else Robot.relays.stopRelay1();
+//    	SmartDashboard.putBoolean("Front Lim Switch", Robot.motors.isLim1Hit());
+//    	SmartDashboard.putBoolean("Claw Grab Lim Switch", Robot.motors.isLim2Hit());
+//    	SmartDashboard.putBoolean("Claw Drop Lim Switch", Robot.motors.isLim3Hit());
+//    	SmartDashboard.putBoolean("Bottom Lim Switch", Robot.motors.isLim4Hit());
+//    	SmartDashboard.putBoolean("Top Lim Switch", Robot.motors.isLim5Hit());
+//    	SmartDashboard.putBoolean("Claw Grab 2 Lim Switch Switch", Robot.motors.isLim6Hit());
+//    	
+//    	if(!Robot.motors.isLim1Hit() && ! Robot.motors.isLim2Hit() && !Robot.motors.isLim6Hit()) Robot.relays.runRelay1Forward();
+//    	else Robot.relays.stopRelay1();
     	
     	SmartDashboard.putBoolean("Claw Max Close Lim Switch", Robot.motors.getClawCloseLim());
     	SmartDashboard.putBoolean("Claw Max Open Lim Switch", Robot.motors.getClawOpenLim());

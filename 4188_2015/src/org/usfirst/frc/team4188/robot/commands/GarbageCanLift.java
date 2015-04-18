@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CorpsLog;
+import org.usfirst.frc.team4188.robot.CHSLog;
 import org.usfirst.frc.team4188.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -33,7 +33,7 @@ public class GarbageCanLift extends Command {
 			isTimerStarted = true;
 		}
 		else{
-			CorpsLog.log("Automatic Stack", "Moving Lift Up", false, true);
+			CHSLog.log("Automatic Stack", "Moving Lift Up", false, true);
 			if(timer.get() < 1.5) Robot.motors.runMotor1(-0.75); //negative means it goes up
 			else {
 				Robot.motors.stopMotor1();

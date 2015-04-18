@@ -65,8 +65,8 @@ public class OI {
     public JoystickButton copilot10;
     public JoystickButton copilot11;
     
-    public CorpsJoystick pilotJoystick;
-    public CorpsJoystick copilotJoystick;
+    public CHSJoystick pilotJoystick;
+    public CHSJoystick copilotJoystick;
     
     //Smart Dashboard buttons
     
@@ -75,8 +75,8 @@ public class OI {
     
     public OI() {
     	//joysticks and joystick buttons
-    	pilotJoystick = new CorpsJoystick(0,4,12,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0);
-        copilotJoystick = new CorpsJoystick(1,3,11,-5,5,1,1,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0);
+    	pilotJoystick = new CHSJoystick(0,4,12,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0);
+        copilotJoystick = new CHSJoystick(1,3,11,-5,5,1,1,-12.0,12.0,1,1.0,-12.0,12.0,1,1.0);
 	
         pilot1 = new JoystickButton(pilotJoystick, 1);
         pilot2 = new JoystickButton(pilotJoystick, 2);
@@ -115,30 +115,25 @@ public class OI {
         copilot7.whenPressed(new ResetClawLift());
         copilot10.whenPressed(new GoToSweetSpot());
         
-        pilot11.whileHeld(new SlowAccelerateOn());
-        pilot11.whenReleased(new SlowAccelerateOff());
         
-        pilot9.whileHeld(new Relay1Forward()); //window motor
-        pilot11.whileHeld(new Relay1Backward()); //window motor
 //        pilot3.whileHeld(new RunLiftMotor());
 //        pilot3.whenReleased(new StopLiftMotor());
 //        pilot5.whileHeld(new RunClawMotor());
 //        pilot5.whenReleased(new StopClawMotor());
-        pilot12.whileHeld(new RunCanBurglarMotor());
-        pilot12.whenReleased(new StopCanBurglarMotor());
+        pilot11.whileHeld(new CanBurglarDown());
+        pilot11.whenReleased(new CanBurglarStop());
+        pilot12.whileHeld(new CanBurglarUp());
+        pilot12.whenReleased(new CanBurglarStop());
         
         
-        
-        
-        
-    /**    //smartdashboard buttons
-        button1 = new InternalButton();
-        SmartDashboard.putData("Autonomous Drive Forward", button1);
-        button1.whenPressed(new AutonomousSet(1));
-        
-        button2 = new InternalButton();
-        SmartDashboard.putData("Autonomous Gargbage Can + Tote Forward", button2);
-        button2.whenPressed(new AutonomousSet(2)); **/
+//        //smartdashboard buttons
+//        button1 = new InternalButton();
+//        SmartDashboard.putData("Autonomous Drive Forward", button1);
+//        button1.whenPressed(new AutonomousSet(1));
+//        
+//        button2 = new InternalButton();
+//        SmartDashboard.putData("Autonomous Gargbage Can + Tote Forward", button2);
+//        button2.whenPressed(new AutonomousSet(2));
     }
     
     public Joystick getpilotJoystick() {
@@ -149,6 +144,3 @@ public class OI {
         return copilotJoystick;
     }
 }
-
-
-

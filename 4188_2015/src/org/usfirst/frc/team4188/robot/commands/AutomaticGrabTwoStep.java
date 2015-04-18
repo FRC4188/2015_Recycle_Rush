@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CorpsLog;
+import org.usfirst.frc.team4188.robot.CHSLog;
 import org.usfirst.frc.team4188.robot.Robot;
 import org.usfirst.frc.team4188.robot.RobotMap;
 
@@ -45,12 +45,12 @@ public class AutomaticGrabTwoStep extends Command {
     	
     	//close claw till front two lim switches are hit
     	if(!doneYet1){
-    		if(Robot.motors.isLim7Hit() && Robot.motors.isLim8Hit()) Robot.motors.runMotor2(0.3); //positive means close
-    		else {
-    			Robot.motors.stopMotor2();
-    			doneYet1 = true;
-    			
-    		}
+//    		if(Robot.motors.isLim7Hit() && Robot.motors.isLim8Hit()) Robot.motors.runMotor2(0.3); //positive means close
+//    		else {
+//    			Robot.motors.stopMotor2();
+//    			doneYet1 = true;
+//    			
+//    		}
     	}
     	
     	//drive backwards for 2 seconds
@@ -100,20 +100,20 @@ public class AutomaticGrabTwoStep extends Command {
     	
     	//go forward till front switch is hit
     	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && !doneYet5){
-    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.3, 0, RobotMap.drivetraingyro.getAngle()*.03); //negative means drive forward
-    		else {
-    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
-    			doneYet5 = true;
-    		}
+//    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.3, 0, RobotMap.drivetraingyro.getAngle()*.03); //negative means drive forward
+//    		else {
+//    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
+//    			doneYet5 = true;
+//    		}
     	}
     	
     	//close claw till both sides of claw switches are hit
     	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && doneYet5 && !doneYet6){
-    		if(Robot.motors.isLim2Hit() || Robot.motors.isLim6Hit()) Robot.motors.runMotor2(0.3); //positive means close
-    		else {
-    			Robot.motors.stopMotor2();
-    			doneYet6 = true;
-    		}
+//    		if(Robot.motors.isLim2Hit() || Robot.motors.isLim6Hit()) Robot.motors.runMotor2(0.3); //positive means close
+//    		else {
+//    			Robot.motors.stopMotor2();
+//    			doneYet6 = true;
+//    		}
     	}
     	
     	//lift up x amount

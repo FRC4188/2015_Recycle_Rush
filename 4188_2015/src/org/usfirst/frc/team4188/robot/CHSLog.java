@@ -2,7 +2,7 @@ package org.usfirst.frc.team4188.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class CorpsLog {
+public class CHSLog {
     private static final boolean SMARTDASHBOARD = true, ENABLE_CONSOLE = true;
     public static void log(String title, String message, boolean dashboard, boolean console) {
         if(console && ENABLE_CONSOLE) System.out.println(title+": "+message);

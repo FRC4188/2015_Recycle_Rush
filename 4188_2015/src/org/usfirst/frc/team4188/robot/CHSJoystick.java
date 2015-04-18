@@ -2,7 +2,7 @@ package org.usfirst.frc.team4188.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 
-public class CorpsJoystick extends Joystick {
+public class CHSJoystick extends Joystick {
     private boolean[] prevState;
     private boolean[] toggleState;
     private boolean wasDead = false;
@@ -11,10 +11,10 @@ public class CorpsJoystick extends Joystick {
     private double XNegDeadZone, XPosDeadZone, XMaxSpeedPercent;
     private double YNegDeadZone, YPosDeadZone, YMaxSpeedPercent;
     private double twistNegDeadZone, twistPosDeadZone, twistMaxSpeedPercent;
-    private int myPort, XScale, YScale, twistScale;
+    private int XScale, YScale, twistScale;
 
     /**
-     * Construct an instance of CorpsJoystick.
+     * Construct an instance of CHSJoystick.
      * The joystick index is the USB port on the drivers station.
      * CHSJoystick constructor allows user to configure dead zones, multipliers
      * (square/cube/etc. joystick axis inputs), and maximum outputs.
@@ -37,7 +37,7 @@ public class CorpsJoystick extends Joystick {
      * @param twistMax Maximum (absolute value) output for twist/Z axis: should be a percentage (<1) or 1 for 100%.
      *          Inputs will be multiplied by this value before being returned. To invert the axis, make this value negative.
      */
-    public CorpsJoystick(int port, int numAxes, int numButtons, double XDZMin,
+    public CHSJoystick(int port, int numAxes, int numButtons, double XDZMin,
             double XDZMax, int XMult, double XMax, double YDZMin, double YDZMax, int YMult,
             double YMax, double twistDZMin, double twistDZMax,
             int twistMult, double twistMax)
@@ -57,7 +57,6 @@ public class CorpsJoystick extends Joystick {
         else{
             throttleAxis = 2;}
 
-        myPort = port;
         prevState = new boolean[numButtons+1];          // Add 1 because the 0th index will be empty.
         toggleState = new boolean[numButtons+1];        // Add 1 because the 0th index will be empty.
         numberOfAxes = numAxes;
@@ -80,7 +79,7 @@ public class CorpsJoystick extends Joystick {
      * and defaults to no dead zones, no limit on max outputs, and squaring inputs.
      * @param port The port on the driver station that the joystick is plugged into.
      */
-    public CorpsJoystick(int port, int numAxes, int numButtons)
+    public CHSJoystick(int port, int numAxes, int numButtons)
     {
         // Default to no dead zones, no limit on max outputs, and squaring inputs.
         this(port, numAxes, numButtons, 0, 0, 2, 1, 0, 0, 2, 1, 0, 0, 2, 1);
@@ -91,7 +90,7 @@ public class CorpsJoystick extends Joystick {
      * Defaults to 4 axes, 12 buttons, no dead zones, no limit on max outputs, and squaring inputs.
      * @param port The port on the driver station that the joystick is plugged into.
      */
-    public CorpsJoystick(int port)
+    public CHSJoystick(int port)
     {
         // Default to 5 axes, 12 buttons, no dead zones, no limit on max outputs, and squaring inputs.
         this(port, 5, 12, 0, 0, 2, 1, 0, 0, 2, 1, 0, 0, 2, 1);

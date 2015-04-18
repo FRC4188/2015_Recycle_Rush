@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CorpsLog;
+import org.usfirst.frc.team4188.robot.CHSLog;
 import org.usfirst.frc.team4188.robot.Robot;
 import org.usfirst.frc.team4188.robot.RobotMap;
 
@@ -48,12 +48,12 @@ public class AutomaticStack extends Command {
     	
     	//drive forward till next tote is hit
     	if(!doneYet1){
-    		CorpsLog.log("Automatic Stack", "Moving Forward", false, true);
-    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
-    		else {
-    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
-        		doneYet1 = true;
-    		} 
+    		CHSLog.log("Automatic Stack", "Moving Forward", false, true);
+//    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
+//    		else {
+//    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
+//        		doneYet1 = true;
+//    		} 
     	}
     	
     	//move lift down till stack hits bottom tote
@@ -63,7 +63,7 @@ public class AutomaticStack extends Command {
     			isTimerStarted = true;
     		}
     		else{
-    			CorpsLog.log("Automatic Stack", "Moving Lift Down", false, true);
+    			CHSLog.log("Automatic Stack", "Moving Lift Down", false, true);
     			if(timer.get() < 1) Robot.motors.runMotor1(0.75); //positive means it goes down
     			else {
     				Robot.motors.stopMotor1();
@@ -81,7 +81,7 @@ public class AutomaticStack extends Command {
     			isTimer2Started = true;
     		}
     		else{
-    			CorpsLog.log("Automatic Stack", "", false, true);
+    			CHSLog.log("Automatic Stack", "", false, true);
     			if(timer2.get() < 2) Robot.drivetrain.autoDrive(0, 0.3, 0, RobotMap.drivetraingyro.getAngle()*.03);
     			else {
     				Robot.drivetrain.autoDrive(0, 0, 0, 0);
@@ -92,12 +92,12 @@ public class AutomaticStack extends Command {
     	
     	//move lift down to the ground
     	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && !doneYet5){
-    		CorpsLog.log("Automatic Stack", "Moving Lift Down", false, true);
-    		if(Robot.motors.isLim4Hit()) Robot.motors.runMotor1(0.75); //positive means it goes down
-    		else {
-   				Robot.motors.stopMotor1();
-   				doneYet5 = true;
-   			}
+    		CHSLog.log("Automatic Stack", "Moving Lift Down", false, true);
+//    		if(Robot.motors.isLim4Hit()) Robot.motors.runMotor1(0.75); //positive means it goes down
+//    		else {
+//   				Robot.motors.stopMotor1();
+//   				doneYet5 = true;
+//   			}
     	}
     	
     }

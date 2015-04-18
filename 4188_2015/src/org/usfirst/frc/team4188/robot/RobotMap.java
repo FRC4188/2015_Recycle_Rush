@@ -22,21 +22,24 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
+
+	public static double canBurglarSpeed = 0.4;
+	public static double circumference = 8 * Math.PI;	// Wheel size in inches
+	public static double tickDistance = circumference / 360;
+	
 	public static boolean exitAuto;
 	
-	public static RobotDrive driveBase;
+	public static CHSRobotDrive driveBase;
 	public static CANTalon frontLeft;
 	public static CANTalon frontRight;
 	public static CANTalon rearLeft;
 	public static CANTalon rearRight;
 	public static Gyro drivetraingyro;
 	
-	public static CANJaguar canBurglar;
-	public static DigitalInput CanBurglarMax;
-	public static DigitalInput CanBurglarMin;
+	public static CANTalon canBurglar;
 	
-	public static CANTalon testMotor1;
-	public static CANTalon testMotor2;
+	public static CANTalon liftMotor;
+	public static CANTalon clawMotor;
 	public static CANTalon testMotor3;
 	public static CANTalon testMotor4;
 	
@@ -57,63 +60,46 @@ public class RobotMap {
 	public static AnalogInput potentiometer;
 	
 	public static void init() {
-		
 		exitAuto = false;
 		
-		//drivetraingyro = new Gyro(0); //Analog
-		//drivetraingyro.setSensitivity(0.007);
+		drivetraingyro = new Gyro(0); 			//Analog Input
+		drivetraingyro.setSensitivity(0.007);
 		
 		frontLeft = new CANTalon(11); 
 		frontRight = new CANTalon(12);
 		rearLeft = new CANTalon(13);
 		rearRight = new CANTalon(14);
-		
+
 		frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		rearLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		rearRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		
-		driveBase = new RobotDrive (frontLeft, rearLeft, frontRight, rearRight);
+		frontLeft.ClearIaccum();
+		
+		driveBase = new CHSRobotDrive (frontLeft, rearLeft, frontRight, rearRight);
 		driveBase.setSafetyEnabled(false);
 		driveBase.setExpiration(0.1);
 		driveBase.setSensitivity(0.5);
 		driveBase.setMaxOutput(1.0);
 		driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
-		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);		
 		
-		testMotor1 = new CANTalon(15); //PWM //lift motor1
-		testMotor2 = new CANTalon(16); //claw motor
-		testMotor3 = new CANTalon(17); //lift motor2
-		testMotor4 = new CANTalon(18);
-		
-		
-		//testMotor2.enableLimitSwitch(true, true);
-		//testMotor2.ConfigFwdLimitSwitchNormallyOpen(true);
-		//testMotor2.ConfigRevLimitSwitchNormallyOpen(true);
-		testMotor2.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); //magnetic encoder
-		
-		testRelay1 = new Relay(0, Relay.Direction.kBoth); //Relay
-		testRelay2 = new Relay(1, Relay.Direction.kBoth);
-		testRelay3 = new Relay(2, Relay.Direction.kBoth);
-		testRelay4 = new Relay(3, Relay.Direction.kBoth);
+		liftMotor = new CANTalon(15);
+		liftMotor.enableLimitSwitch(true, true);
+		liftMotor.ConfigFwdLimitSwitchNormallyOpen(true);
+		liftMotor.ConfigRevLimitSwitchNormallyOpen(true);
 
-		limSwitch1 = new DigitalInput(0); //DIO
-		limSwitch2 = new DigitalInput(1); //DIO
-		limSwitch3 = new DigitalInput(2); //DIO
-		limSwitch4 = new DigitalInput(3); //DIO
-		limSwitch5 = new DigitalInput(4); //DIO top
-		limSwitch6 = new DigitalInput(5); //DIO bottom
-		limSwitch7 = new DigitalInput(6); //DIO left claw front
-		limSwitch8 = new DigitalInput(7); //DIO right claw front
-		
-		
-		CanBurglarMax = new DigitalInput(8);
-		CanBurglarMin = new DigitalInput(9);
-		canBurglar = new CANJaguar(19);
-		
-		
-	//	potentiometer = new AnalogInput(1); //AIO
-		
+		clawMotor = new CANTalon(16);
+		clawMotor.enableLimitSwitch(true, true);
+		clawMotor.ConfigFwdLimitSwitchNormallyOpen(true);
+		clawMotor.ConfigRevLimitSwitchNormallyOpen(true);
+		clawMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); //magnetic encoder
+
+		canBurglar = new CANTalon(17);
+		canBurglar.enableLimitSwitch(true, true);
+		canBurglar.ConfigFwdLimitSwitchNormallyOpen(true);
+		canBurglar.ConfigRevLimitSwitchNormallyOpen(true);
 		
 	/**	encoder1 = new Encoder(0, 1, false, EncodingType.k4X);
 		encoder1.setDistancePerPulse(1.0);

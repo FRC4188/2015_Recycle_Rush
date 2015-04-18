@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Motors motors;
 	public static Relays relays;
-	public static CanBurglar canburglar;
+	public static CanBurglar canBurglar;
 
 
     /**
@@ -51,14 +51,14 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drivetrain = new DriveTrain();
 		motors = new Motors();
-		relays = new Relays();
-		canburglar = new CanBurglar();
+//		relays = new Relays();
+		canBurglar = new CanBurglar();
 		autoChooser = new SendableChooser();
 		
 		motors.init();
 	    drivetrain.init();
-	    relays.init();
-	    canburglar.init();
+//	    relays.init();
+	    canBurglar.init();
 	    
         autonomousCommand = new Autonomous();
         sensors = new SensorDisplay();

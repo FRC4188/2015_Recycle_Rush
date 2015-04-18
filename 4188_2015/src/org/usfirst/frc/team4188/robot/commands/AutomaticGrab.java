@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CorpsLog;
+import org.usfirst.frc.team4188.robot.CHSLog;
 import org.usfirst.frc.team4188.robot.Robot;
 import org.usfirst.frc.team4188.robot.RobotMap;
 
@@ -41,22 +41,22 @@ public class AutomaticGrab extends Command {
     	doneYet1 = true; 
     	
     	if(doneYet1 && !doneYet2){
-    		CorpsLog.log("Automatic Grab", "Moving Forward", false, true);
-    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
-    		else {
-    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
-    			doneYet2 = true;
-    		}
+    		CHSLog.log("Automatic Grab", "Moving Forward", false, true);
+//    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
+//    		else {
+//    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
+//    			doneYet2 = true;
+//    		}
     	}
     	
     	//close claw till tote is hit
     	if(doneYet1 && doneYet2 && !doneYet3){
-    		CorpsLog.log("Automatic Grab", "Closing Claw", false, true);
-    		if(Robot.motors.isLim2Hit() || Robot.motors.isLim6Hit()) Robot.motors.runMotor2(0.3);
-    		else {
-    			Robot.motors.stopMotor2();
-    			doneYet3 = true;
-    		}
+    		CHSLog.log("Automatic Grab", "Closing Claw", false, true);
+//    		if(Robot.motors.isLim2Hit() || Robot.motors.isLim6Hit()) Robot.motors.runMotor2(0.3);
+//    		else {
+//    			Robot.motors.stopMotor2();
+//    			doneYet3 = true;
+//    		}
     	}
     	
     	//lift up x amount
@@ -66,7 +66,7 @@ public class AutomaticGrab extends Command {
     			isTimer3Started = true;
     		}
     		else{
-    			CorpsLog.log("Automatic Grab", "Lift Up", false, true);
+    			CHSLog.log("Automatic Grab", "Lift Up", false, true);
     			if(timer3.get() < 3) Robot.motors.runMotor1(-0.75); //negative means it goes up
     			else {
     				Robot.motors.stopMotor1();
