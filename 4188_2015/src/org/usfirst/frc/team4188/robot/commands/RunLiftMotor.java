@@ -20,16 +20,7 @@ public class RunLiftMotor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.motors.runMotor1WithJoystick(-Robot.oi.copilotJoystick.getY()*Robot.oi.copilotJoystick.getThrottle());
-    	
-    /**	if(!Robot.motors.isLim4Hit()) {
-    		if (-Robot.oi.copilotJoystick.getY() < 0) Robot.motors.stopMotor1(); //hit bottom
-    	}
-    	
-    	if(!Robot.motors.isLim5Hit()) {
-    		if (-Robot.oi.copilotJoystick.getY() > 0) Robot.motors.stopMotor1(); //hit top
-    	}**/
-    	
+    	Robot.motors.runLiftWithJoystick(-Robot.oi.copilotJoystick.getY()*Robot.oi.copilotJoystick.getThrottle());
     }
 
     // Make this return true when this Command no longer needs to run execute()

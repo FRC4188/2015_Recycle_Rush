@@ -51,8 +51,8 @@ public class AutomaticStack extends Command {
     		CHSLog.log("Automatic Stack", "Moving Forward", false, true);
 //    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.2, 0, RobotMap.drivetraingyro.getAngle()*.03);
 //    		else {
-//    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
-//        		doneYet1 = true;
+    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
+        		doneYet1 = true;
 //    		} 
     	}
     	
@@ -64,9 +64,9 @@ public class AutomaticStack extends Command {
     		}
     		else{
     			CHSLog.log("Automatic Stack", "Moving Lift Down", false, true);
-    			if(timer.get() < 1) Robot.motors.runMotor1(0.75); //positive means it goes down
+    			if(timer.get() < 1) Robot.motors.runLift(0.75); //positive means it goes down
     			else {
-    				Robot.motors.stopMotor1();
+    				Robot.motors.stopLift();
     				doneYet2 = true;
     			}
     		}
@@ -93,11 +93,11 @@ public class AutomaticStack extends Command {
     	//move lift down to the ground
     	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && !doneYet5){
     		CHSLog.log("Automatic Stack", "Moving Lift Down", false, true);
-//    		if(Robot.motors.isLim4Hit()) Robot.motors.runMotor1(0.75); //positive means it goes down
-//    		else {
-//   				Robot.motors.stopMotor1();
-//   				doneYet5 = true;
-//   			}
+    		if(Robot.motors.isLiftTop()) Robot.motors.runLift(0.75); //positive means it goes down
+    		else {
+   				Robot.motors.stopLift();
+   				doneYet5 = true;
+   			}
     	}
     	
     }

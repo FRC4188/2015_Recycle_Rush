@@ -44,14 +44,14 @@ public class AutomaticGrabTwoStep extends Command {
     protected void execute() {
     	
     	//close claw till front two lim switches are hit
-    	if(!doneYet1){
-//    		if(Robot.motors.isLim7Hit() && Robot.motors.isLim8Hit()) Robot.motors.runMotor2(0.3); //positive means close
+//    	if(!doneYet1){
+//    		if(Robot.motors.isLim7Hit() && Robot.motors.isLim8Hit()) Robot.motors.runClaw(0.3); //positive means close
 //    		else {
-//    			Robot.motors.stopMotor2();
+//    			Robot.motors.stopClaw();
 //    			doneYet1 = true;
 //    			
 //    		}
-    	}
+//    	}
     	
     	//drive backwards for 2 seconds
     	if(doneYet1 && !doneYet2){
@@ -75,9 +75,9 @@ public class AutomaticGrabTwoStep extends Command {
     			isTimer2Started = true;
     		}
     		else{
-    			if(timer2.get() < 2) Robot.motors.runMotor2(-0.3); //negative means open
+    			if(timer2.get() < 2) Robot.motors.runClaw(-0.3); //negative means open
     			else {
-    				Robot.motors.stopMotor2();
+    				Robot.motors.stopClaw();
     				doneYet3 = true;
     			}
     		}
@@ -99,22 +99,22 @@ public class AutomaticGrabTwoStep extends Command {
     	}
     	
     	//go forward till front switch is hit
-    	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && !doneYet5){
+//    	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && !doneYet5){
 //    		if(Robot.motors.isLim1Hit()) Robot.drivetrain.autoDrive(0, -0.3, 0, RobotMap.drivetraingyro.getAngle()*.03); //negative means drive forward
 //    		else {
 //    			Robot.drivetrain.autoDrive(0, 0, 0, 0);
 //    			doneYet5 = true;
 //    		}
-    	}
+//    	}
     	
     	//close claw till both sides of claw switches are hit
-    	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && doneYet5 && !doneYet6){
-//    		if(Robot.motors.isLim2Hit() || Robot.motors.isLim6Hit()) Robot.motors.runMotor2(0.3); //positive means close
+//    	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && doneYet5 && !doneYet6){
+//    		if(Robot.motors.isClawClosed() || Robot.motors.isLim6Hit()) Robot.motors.runClaw(0.3); //positive means close
 //    		else {
-//    			Robot.motors.stopMotor2();
+//    			Robot.motors.stopClaw();
 //    			doneYet6 = true;
 //    		}
-    	}
+//    	}
     	
     	//lift up x amount
     	if(doneYet1 && doneYet2 && doneYet3 && doneYet4 && doneYet5 && doneYet6 && !doneYet7){
@@ -123,9 +123,9 @@ public class AutomaticGrabTwoStep extends Command {
     			isTimer3Started = true;
     		}
     		else{
-    			if(timer3.get() < 3) Robot.motors.runMotor1(-0.75); //negative means it goes up
+    			if(timer3.get() < 3) Robot.motors.runLift(-0.75); //negative means it goes up
     			else {
-    				Robot.motors.stopMotor1();
+    				Robot.motors.stopLift();
     				doneYet4 = true;
     			}
     		}

@@ -27,18 +27,18 @@ public class ResetClawLift extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(!doneYet1){
-    		if(!Robot.motors.getClawOpenLim()) Robot.motors.runMotor2(-0.9); //negative means open
+    		if(!Robot.motors.getClawOpenLim()) Robot.motors.runClaw(-0.9); //negative means open
     		else {
-    			Robot.motors.stopMotor2();
+    			Robot.motors.stopClaw();
         		doneYet1 = true;
     		} 
     	}
     	
     	//move lift down till stack hits bottom tote
     	if(doneYet1 && !doneYet2){
-    		if(!Robot.motors.getLiftBottomLim()) Robot.motors.runMotor1(0.95); //positive means go down
+    		if(!Robot.motors.getLiftBottomLim()) Robot.motors.runLift(0.95); //positive means go down
     		else {
-    			Robot.motors.stopMotor1();
+    			Robot.motors.stopLift();
         		doneYet2 = true;
     		} 
     	}

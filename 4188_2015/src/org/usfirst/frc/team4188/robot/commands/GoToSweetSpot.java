@@ -41,10 +41,10 @@ public class GoToSweetSpot extends Command {
     	
     	if(!doneYet1){
     		if(!Robot.motors.getClawCloseLim()){
-    			Robot.motors.runMotor2(0.5); //positive to close
+    			Robot.motors.runClaw(0.5); //positive to close
     		}
     		else {
-    			Robot.motors.stopMotor2();
+    			Robot.motors.stopClaw();
     			doneYet1 = true;
     		}
     	}

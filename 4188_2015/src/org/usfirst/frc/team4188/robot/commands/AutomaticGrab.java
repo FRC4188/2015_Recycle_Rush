@@ -50,14 +50,14 @@ public class AutomaticGrab extends Command {
     	}
     	
     	//close claw till tote is hit
-    	if(doneYet1 && doneYet2 && !doneYet3){
-    		CHSLog.log("Automatic Grab", "Closing Claw", false, true);
-//    		if(Robot.motors.isLim2Hit() || Robot.motors.isLim6Hit()) Robot.motors.runMotor2(0.3);
+//    	if(doneYet1 && doneYet2 && !doneYet3){
+//    		CHSLog.log("Automatic Grab", "Closing Claw", false, true);
+//    		if(Robot.motors.isClawClosed() || Robot.motors.isLim6Hit()) Robot.motors.runClaw(0.3);
 //    		else {
-//    			Robot.motors.stopMotor2();
+//    			Robot.motors.stopClaw();
 //    			doneYet3 = true;
 //    		}
-    	}
+//    	}
     	
     	//lift up x amount
     	if(doneYet1 && doneYet2 && doneYet3 && !doneYet4){
@@ -67,9 +67,9 @@ public class AutomaticGrab extends Command {
     		}
     		else{
     			CHSLog.log("Automatic Grab", "Lift Up", false, true);
-    			if(timer3.get() < 3) Robot.motors.runMotor1(-0.75); //negative means it goes up
+    			if(timer3.get() < 3) Robot.motors.runLift(-0.75); //negative means it goes up
     			else {
-    				Robot.motors.stopMotor1();
+    				Robot.motors.stopLift();
     				doneYet4 = true;
     			}
     		}

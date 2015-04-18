@@ -13,12 +13,10 @@ import org.usfirst.frc.team4188.robot.commands.CanBurgleAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoForwardAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoForwardWithToteAutonomous;
 import org.usfirst.frc.team4188.robot.commands.GoRightGoForwardAutonomous;
-import org.usfirst.frc.team4188.robot.commands.Relay1Forward;
 import org.usfirst.frc.team4188.robot.commands.SensorDisplay;
 import org.usfirst.frc.team4188.robot.subsystems.CanBurglar;
 import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4188.robot.subsystems.Motors;
-import org.usfirst.frc.team4188.robot.subsystems.Relays;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,7 +36,6 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Motors motors;
-	public static Relays relays;
 	public static CanBurglar canBurglar;
 
 
@@ -51,13 +48,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drivetrain = new DriveTrain();
 		motors = new Motors();
-//		relays = new Relays();
 		canBurglar = new CanBurglar();
 		autoChooser = new SendableChooser();
 		
 		motors.init();
 	    drivetrain.init();
-//	    relays.init();
 	    canBurglar.init();
 	    
         autonomousCommand = new Autonomous();
