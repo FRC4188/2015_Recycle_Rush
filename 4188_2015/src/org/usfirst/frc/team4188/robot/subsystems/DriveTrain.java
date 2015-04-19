@@ -18,6 +18,8 @@ public class DriveTrain extends Subsystem{
 	CANTalon rearRight = RobotMap.rearRight;
 	Gyro gyro = RobotMap.drivetraingyro;
 	
+	static final double tickDistance = RobotMap.tickDistance;
+	
 	public void init (){
 		gyro.reset();
 	}
@@ -75,8 +77,7 @@ public class DriveTrain extends Subsystem{
 		double frontRight = Robot.drivetrain.getEncoderFR();
 		double rearLeft = Robot.drivetrain.getEncoderRL();
 		double rearRight = Robot.drivetrain.getEncoderRR();
-        
-        return (frontLeft + frontRight + rearLeft + rearRight) / 4;
+        return ((frontLeft + frontRight + rearLeft + rearRight) / 4.0) * tickDistance;
 	}
 	
 	public void getEncoderValues(){        

@@ -13,7 +13,7 @@ public class CanBurglarUp extends Command {
     public CanBurglarUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	requires(Robot.canBurglar);
+    	requires(Robot.canBurglar);
     }
 
     // Called just before this Command runs the first time
