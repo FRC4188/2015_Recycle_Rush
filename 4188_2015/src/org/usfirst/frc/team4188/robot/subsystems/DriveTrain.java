@@ -74,17 +74,17 @@ public class DriveTrain extends Subsystem{
 	
 	public double getDistance(){	// Returns value in inches
 		double frontLeft = Robot.drivetrain.getEncoderFL();
-		double frontRight = Robot.drivetrain.getEncoderFR();
+		double frontRight = -Robot.drivetrain.getEncoderFR();
 		double rearLeft = Robot.drivetrain.getEncoderRL();
-		double rearRight = Robot.drivetrain.getEncoderRR();
+		double rearRight = -Robot.drivetrain.getEncoderRR();
         return ((frontLeft + frontRight + rearLeft + rearRight) / 4.0) / tickDistance;
 	}
 	
 	public void getEncoderValues(){        
         SmartDashboard.putNumber("frontLeftEncoder distance", frontLeft.getEncPosition());
-        SmartDashboard.putNumber("frontRightEncoder distance", frontRight.getEncPosition());
+        SmartDashboard.putNumber("frontRightEncoder distance", -frontRight.getEncPosition());
         SmartDashboard.putNumber("rearLeftEncoder distance", rearLeft.getEncPosition());
-        SmartDashboard.putNumber("rearRightEncoder distance", rearRight.getEncPosition());
+        SmartDashboard.putNumber("rearRightEncoder distance", -rearRight.getEncPosition());
 	}
 
 	public void autoDrive(double xSpeed, double ySpeed, double twist, double direction){

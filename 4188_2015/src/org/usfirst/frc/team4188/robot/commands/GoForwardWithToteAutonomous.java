@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4188.robot.commands;
 
+import org.usfirst.frc.team4188.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,10 +27,9 @@ public class GoForwardWithToteAutonomous extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
    
-    addSequential(new ToteLift());
-    addSequential (new AutoDrive(6500, -0.8, AutoDrive.MOVE_FORWARD));
-	//addSequential(new AutoDrive(6500, -0.8, 1));
+    	addSequential(new LiftUp (3.0));
+
+	    Robot.drivetrain.resetEncoders();
+		addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 96.0));    	
     }
-    
-    
 }

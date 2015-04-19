@@ -13,11 +13,11 @@ public class CanBurglarUp extends Command {
     public CanBurglarUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.canBurglar);
+//    	requires(Robot.canBurglar);
     }
 
     public CanBurglarUp(double duration) {	// Stop moving after timeout
-    	requires(Robot.canBurglar);
+//    	requires(Robot.canBurglar);
     	this.setTimeout(duration);
     }
 

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4188.robot.commands;
 
+import org.usfirst.frc.team4188.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -25,14 +27,8 @@ public class GoForwardAutonomous extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	
-    	
     	addSequential (new GarbageCanLift());
-    	addSequential (new AutoDrive(6500, -0.8, AutoDrive.MOVE_FORWARD));
-    	//addSequential(new AutoDrive(6500, -0.8, 1));
-    	
-    
+    	Robot.drivetrain.resetEncoders();			// Zero the encoders then move straight ahead 10' at 60%
+    	addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 96.0));    	
     }
-    
-    
 }

@@ -22,7 +22,7 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-	public static double canBurglarSpeed = 0.4;
+	public static double canBurglarSpeed = 0.6;
 
 	// 8" wheels * pi = 25.132
 	// 360 ticks/revolution * 2 edges * 2 channels (a + b) = 1440
@@ -60,8 +60,8 @@ public class RobotMap {
 	frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 	rearLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 	rearRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-	frontRight.reverseOutput(true);
-	rearRight.reverseOutput(true);
+//	frontRight.reverseOutput(true);
+//	rearRight.reverseOutput(true);
 		
 	frontLeft.ClearIaccum();
 	
@@ -70,8 +70,8 @@ public class RobotMap {
 	driveBase.setExpiration(0.1);
 	driveBase.setSensitivity(0.5);
 	driveBase.setMaxOutput(1.0);
-//	driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);		// Reverse with CANTalons to have sensors in sync
-//	driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);		
+	driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);		// Reverse with CANTalons to have sensors in sync
+	driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);		
 	
 	liftMotor = new CANTalon(15);
 	liftMotor.enableLimitSwitch(true, true);

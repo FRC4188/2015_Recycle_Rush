@@ -70,9 +70,8 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+        // schedule the autonomous command (example)
     	Robot.drivetrain.resetEncoders();
-
-    	// schedule the autonomous command (example)
     	autonomousCommand = (Command) autoChooser.getSelected();
     	autonomousCommand.start();
     	sensors.start();
@@ -84,6 +83,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        Robot.drivetrain.getEncoderValues();
     }
 
     public void teleopInit() {
@@ -91,6 +91,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	Robot.drivetrain.resetEncoders();
         if (autonomousCommand != null) autonomousCommand.cancel();
         sensors.start();
     	Robot.drivetrain.resetEncoders();
@@ -109,6 +110,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Robot.drivetrain.getEncoderValues();
     }
     
     /**

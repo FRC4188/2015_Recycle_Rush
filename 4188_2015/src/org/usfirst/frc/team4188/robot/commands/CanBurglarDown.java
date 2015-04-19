@@ -13,13 +13,13 @@ public class CanBurglarDown extends Command {
     public CanBurglarDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.canBurglar);
+//    	requires(Robot.canBurglar);
     	this.setInterruptible(true);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.setTimeout(1.5);
+    	this.setTimeout(1.2);
     	this.setInterruptible(true);
     }
 
