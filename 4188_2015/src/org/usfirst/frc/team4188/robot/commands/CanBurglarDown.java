@@ -13,11 +13,14 @@ public class CanBurglarDown extends Command {
     public CanBurglarDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	requires(Robot.canBurglar);
+    	requires(Robot.canBurglar);
+    	this.setInterruptible(true);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.setTimeout(1.5);
+    	this.setInterruptible(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,7 +30,7 @@ public class CanBurglarDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.canBurglar.isAtBottom();
+        return Robot.canBurglar.isAtBottom() || this.isTimedOut();	// Finish if hits limit switch or takes too long
     }
 
     // Called once after isFinished returns true

@@ -22,10 +22,13 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-
 	public static double canBurglarSpeed = 0.4;
-	public static double circumference = 8 * Math.PI;	// Wheel size in inches
-	public static double tickDistance = circumference / 360;
+
+	// 8" wheels * pi = 25.132
+	// 360 ticks/revolution * 2 edges * 2 channels (a + b) = 1440
+	// 1440/25.132 = 57.3
+	// mechanum 20% loss * 57.3 = 45 
+	public static double ticksPerInch = 45;				// Ticks/inch for 8 inch mechanum wheels
 	
 	public static boolean exitAuto;
 	
@@ -40,90 +43,50 @@ public class RobotMap {
 	
 	public static CANTalon liftMotor;
 	public static CANTalon clawMotor;
-	public static CANTalon testMotor3;
-	public static CANTalon testMotor4;
-	
-	public static Relay testRelay1;
-	public static Relay testRelay2;
-	public static Relay testRelay3;
-	public static Relay testRelay4;
-	
-	public static DigitalInput limSwitch1;
-	public static DigitalInput limSwitch2;
-	public static DigitalInput limSwitch3;
-	public static DigitalInput limSwitch4;
-	public static DigitalInput limSwitch5;
-	public static DigitalInput limSwitch6;
-	public static DigitalInput limSwitch7;
-	public static DigitalInput limSwitch8;
 	
 	public static AnalogInput potentiometer;
 	
 	public static void init() {
-		exitAuto = false;
 		
-		drivetraingyro = new Gyro(0); 			//Analog Input
-		drivetraingyro.setSensitivity(0.007);
-		
-		frontLeft = new CANTalon(11); 
-		frontRight = new CANTalon(12);
-		rearLeft = new CANTalon(13);
-		rearRight = new CANTalon(14);
+	drivetraingyro = new Gyro(0); 			//Analog Input
+	drivetraingyro.setSensitivity(0.007);
+	
+	frontLeft = new CANTalon(11); 
+	frontRight = new CANTalon(12);
+	rearLeft = new CANTalon(13);
+	rearRight = new CANTalon(14);
 
-		frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		rearLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		rearRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+	frontLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+	frontRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+	rearLeft.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+	rearRight.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+	frontRight.reverseOutput(true);
+	rearRight.reverseOutput(true);
 		
-		frontLeft.ClearIaccum();
-		
-		driveBase = new CHSRobotDrive (frontLeft, rearLeft, frontRight, rearRight);
-		driveBase.setSafetyEnabled(false);
-		driveBase.setExpiration(0.1);
-		driveBase.setSensitivity(0.5);
-		driveBase.setMaxOutput(1.0);
-		driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
-		driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);		
-		
-		liftMotor = new CANTalon(15);
-		liftMotor.enableLimitSwitch(true, true);
-		liftMotor.ConfigFwdLimitSwitchNormallyOpen(true);
-		liftMotor.ConfigRevLimitSwitchNormallyOpen(true);
+	frontLeft.ClearIaccum();
+	
+	driveBase = new CHSRobotDrive (frontLeft, rearLeft, frontRight, rearRight);
+	driveBase.setSafetyEnabled(false);
+	driveBase.setExpiration(0.1);
+	driveBase.setSensitivity(0.5);
+	driveBase.setMaxOutput(1.0);
+//	driveBase.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);		// Reverse with CANTalons to have sensors in sync
+//	driveBase.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);		
+	
+	liftMotor = new CANTalon(15);
+	liftMotor.enableLimitSwitch(true, true);
+	liftMotor.ConfigFwdLimitSwitchNormallyOpen(true);
+	liftMotor.ConfigRevLimitSwitchNormallyOpen(true);
 
-		clawMotor = new CANTalon(16);
-		clawMotor.enableLimitSwitch(true, true);
-		clawMotor.ConfigFwdLimitSwitchNormallyOpen(true);
-		clawMotor.ConfigRevLimitSwitchNormallyOpen(true);
-		clawMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); //magnetic encoder
+	clawMotor = new CANTalon(16);
+	clawMotor.enableLimitSwitch(true, true);
+	clawMotor.ConfigFwdLimitSwitchNormallyOpen(true);
+	clawMotor.ConfigRevLimitSwitchNormallyOpen(true);
+	clawMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); //magnetic encoder
 
-		canBurglar = new CANTalon(17);
-		canBurglar.enableLimitSwitch(true, true);
-		canBurglar.ConfigFwdLimitSwitchNormallyOpen(true);
-		canBurglar.ConfigRevLimitSwitchNormallyOpen(true);
-		
-	/**	encoder1 = new Encoder(0, 1, false, EncodingType.k4X);
-		encoder1.setDistancePerPulse(1.0);
-		encoder1.setPIDSourceParameter(PIDSourceParameter.kRate);
-		encoder1.startLiveWindowMode();
-		LiveWindow.addSensor("Drivetrain", "frontLeftEncoder", encoder1);
-	        
-		encoder2 = new Encoder(2, 3, true, EncodingType.k4X);
-		encoder2.setDistancePerPulse(1.0);
-		encoder2.setPIDSourceParameter(PIDSourceParameter.kRate);
-		encoder2.reset();
-		LiveWindow.addSensor("Drivetrain", "frontRightEncoder", encoder2);
-	        
-		encoder3 = new Encoder(4, 5, false, EncodingType.k4X);
-		encoder3.setDistancePerPulse(1.0);
-		encoder3.setPIDSourceParameter(PIDSourceParameter.kRate);
-		encoder3.startLiveWindowMode();
-		LiveWindow.addSensor("Drivetrain", "rearLeftEncoder", encoder3);
-	        
-		encoder4 = new Encoder(6, 7, true, EncodingType.k4X);
-		encoder4.setDistancePerPulse(1.0);
-		encoder4.setPIDSourceParameter(PIDSourceParameter.kRate);
-		encoder4.startLiveWindowMode();
-		LiveWindow.addSensor("Drivetrain", "rearRightRencoder", encoder4); **/
-		
+	canBurglar = new CANTalon(17);
+	canBurglar.enableLimitSwitch(true, true);
+	canBurglar.ConfigFwdLimitSwitchNormallyOpen(true);
+	canBurglar.ConfigRevLimitSwitchNormallyOpen(true);
 	}
 }

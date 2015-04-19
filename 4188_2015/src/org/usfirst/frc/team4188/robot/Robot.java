@@ -56,16 +56,13 @@ public class Robot extends IterativeRobot {
 	    canBurglar.init();
 	    
         autonomousCommand = new Autonomous();
-        sensors = new SensorDisplay();
-        
+        sensors = new SensorDisplay();        
         
         autoChooser.addDefault("Pick up Garbage Can and Move Forward", new GoForwardAutonomous() );
         autoChooser.addDefault("Pick up Garbage Can and Move Forward With Tote", new GoRightGoForwardAutonomous() );
         autoChooser.addDefault("Pick up Tote and Move Forward", new GoForwardWithToteAutonomous() );
         autoChooser.addDefault("Can Burglar", new CanBurgleAutonomous());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
-        
-       
     }
 	
 	public void disabledPeriodic() {
@@ -73,12 +70,13 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
+    	Robot.drivetrain.resetEncoders();
+
+    	// schedule the autonomous command (example)
     	autonomousCommand = (Command) autoChooser.getSelected();
     	autonomousCommand.start();
     	sensors.start();
         if (autonomousCommand != null) autonomousCommand.start();
-        
     }
 
     /**
@@ -95,6 +93,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         sensors.start();
+    	Robot.drivetrain.resetEncoders();
     }
 
     /**
@@ -117,5 +116,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        Robot.drivetrain.getEncoderValues();	// Display encode values on smartDashboard
     }
 }

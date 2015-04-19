@@ -13,11 +13,17 @@ public class CanBurglarUp extends Command {
     public CanBurglarUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	requires(Robot.canBurglar);
+    	requires(Robot.canBurglar);
+    }
+
+    public CanBurglarUp(double duration) {	// Stop moving after timeout
+    	requires(Robot.canBurglar);
+    	this.setTimeout(duration);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.setInterruptible(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,7 +33,8 @@ public class CanBurglarUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.canBurglar.isAtTop();
+		// Finish if hit top limit switch or if timer has been set and then expired
+    	return Robot.canBurglar.isAtTop() || this.isTimedOut();
     }
 
     // Called once after isFinished returns true
