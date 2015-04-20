@@ -33,6 +33,6 @@ public class CanBurgleAutonomous extends CommandGroup {
     	Robot.drivetrain.resetEncoders();			// Zero the encoders then move straight ahead at 60%
     	addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 60.0));
 
-    	addSequential (new CanBurglarUp());			// Move the arm all the way back to the top
+    	addSequential (new CanBurglarStayUp());			// Move the arm all the way back to the top
     }
 }
