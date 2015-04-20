@@ -30,5 +30,6 @@ public class GoForwardAutonomous extends CommandGroup {
     	addSequential (new GarbageCanLift());
     	Robot.drivetrain.resetEncoders();			// Zero the encoders then move straight ahead 10' at 60%
     	addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 96.0));    	
+    	addSequential (new CanBurglarStayUp());
     }
 }

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class GoRightGoForwardAutonomous extends CommandGroup {
     
-    public  GoRightGoForwardAutonomous() {
+    public  GoRightGoForwardAutonomous(double distance) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -32,6 +32,7 @@ public class GoRightGoForwardAutonomous extends CommandGroup {
     	addSequential (new AutoDriveBearingForDistance(0.6, 90.0, 0.0, 7.0));
     	
     	Robot.drivetrain.resetEncoders();
-    	addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 96.0));    	
+    	addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, distance));    	
+    	addSequential (new CanBurglarStayUp());
     }
 }

@@ -8,15 +8,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4188.robot.commands.Autonomous;
-import org.usfirst.frc.team4188.robot.commands.CanBurgleAutonomous;
-import org.usfirst.frc.team4188.robot.commands.GoForwardAutonomous;
-import org.usfirst.frc.team4188.robot.commands.GoForwardWithToteAutonomous;
-import org.usfirst.frc.team4188.robot.commands.GoRightGoForwardAutonomous;
-import org.usfirst.frc.team4188.robot.commands.SensorDisplay;
-import org.usfirst.frc.team4188.robot.subsystems.CanBurglar;
-import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4188.robot.subsystems.Motors;
+import org.usfirst.frc.team4188.robot.commands.*;
+import org.usfirst.frc.team4188.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,13 +24,11 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser autoChooser;
     Command sensors;
-    
 	
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Motors motors;
 	public static CanBurglar canBurglar;
-
 
     /**
      * This function is run when the robot is first started up and should be
@@ -59,9 +50,11 @@ public class Robot extends IterativeRobot {
         sensors = new SensorDisplay();        
         
         autoChooser.addDefault("Pick up Garbage Can and Move Forward", new GoForwardAutonomous() );
-        autoChooser.addDefault("Pick up Garbage Can and Move Forward With Tote", new GoRightGoForwardAutonomous() );
+        autoChooser.addDefault("Pick up Garbage Can and Move Forward With Tote Left Side", new GoRightGoForwardAutonomous(96.0) );
+        autoChooser.addDefault("Pick up Garbage Can and Move Forward With Tote", new GoRightGoForwardAutonomous(108.0) );
         autoChooser.addDefault("Pick up Tote and Move Forward", new GoForwardWithToteAutonomous() );
         autoChooser.addDefault("Can Burglar", new CanBurgleAutonomous());
+        autoChooser.addDefault("Do Nothing", new DoNothing());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
 	

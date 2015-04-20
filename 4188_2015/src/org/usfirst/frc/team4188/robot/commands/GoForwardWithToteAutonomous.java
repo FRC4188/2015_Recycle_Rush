@@ -30,6 +30,7 @@ public class GoForwardWithToteAutonomous extends CommandGroup {
     	addSequential(new LiftUp (3.0));
 
 	    Robot.drivetrain.resetEncoders();
-		addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 96.0));    	
+		addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 108.0));    	
+    	addSequential (new CanBurglarStayUp());
     }
 }
