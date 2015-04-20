@@ -50,7 +50,7 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public double getEncoderFR(){
-		return frontRight.getEncPosition();
+		return -frontRight.getEncPosition();
 	}
 	
 	public double getEncoderFL(){
@@ -58,7 +58,7 @@ public class DriveTrain extends Subsystem{
 	}
 	
 	public double getEncoderRR(){
-		return rearRight.getEncPosition();
+		return -rearRight.getEncPosition();
 	}
 	
 	public double getEncoderRL(){
