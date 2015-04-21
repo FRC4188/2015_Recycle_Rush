@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutomaticStack extends Command {
 
-	private boolean doneYet1, doneYet2, doneYet3, doneYet4, doneYet5, doneYet6;
+	private boolean doneYet1, doneYet2, doneYet3, doneYet4, doneYet5;
 	Timer timer, timer2, timer3;
-	private boolean isTimerStarted, isTimer2Started, isTimer3Started;
+	private boolean isTimerStarted, isTimer2Started;
 	
 	boolean b;
 	
@@ -31,14 +31,12 @@ public class AutomaticStack extends Command {
     	
     	isTimerStarted = false;
     	isTimer2Started = false;
-    	isTimer3Started = false;
     	
     	doneYet1 = false;
     	doneYet2 = false;
     	doneYet3 = false;
     	doneYet4 = false;
     	doneYet5 = false;
-    	doneYet6 = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -122,7 +120,6 @@ public class AutomaticStack extends Command {
     	timer2.reset();
     	isTimer2Started = false;
     	timer3.reset();
-    	isTimer3Started = false;
     }
 
     // Called when another command which requires one or more of the same

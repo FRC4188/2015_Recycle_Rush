@@ -1,10 +1,7 @@
 package org.usfirst.frc.team4188.robot.commands;
 
-import org.usfirst.frc.team4188.robot.CHSLog;
-import org.usfirst.frc.team4188.robot.Robot;
-import org.usfirst.frc.team4188.robot.RobotMap;
+import org.usfirst.frc.team4188.robot.*;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,7 +11,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GoToSweetSpot extends Command {
 
 	boolean doneYet1, doneYet2, isTimerStarted;
-	private Timer timer;
 	
     public GoToSweetSpot() {
         // Use requires() here to declare subsystem dependencies
@@ -33,7 +29,6 @@ public class GoToSweetSpot extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	double SWEET_SPOT = 3; //set sweet spot number for time in seconds
     	SmartDashboard.putBoolean("doneYet1", doneYet1);
     	SmartDashboard.putBoolean("doneYet2", doneYet2);
 //		SmartDashboard.putBoolean("Sweet Spot Timer Started", isTimerStarted);

@@ -1,10 +1,8 @@
 package org.usfirst.frc.team4188.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4188.robot.Robot;
-import org.usfirst.frc.team4188.robot.RobotMap;
+import org.usfirst.frc.team4188.robot.*;
 
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
