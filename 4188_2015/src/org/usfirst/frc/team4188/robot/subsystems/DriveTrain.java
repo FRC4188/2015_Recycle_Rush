@@ -95,9 +95,9 @@ public class DriveTrain extends Subsystem{
 	
 	public void getEncoderValues(){        
         SmartDashboard.putNumber("frontLeftEncoder distance", frontLeft.getEncPosition());
-        SmartDashboard.putNumber("frontRightEncoder distance", -frontRight.getEncPosition());
+        SmartDashboard.putNumber("frontRightEncoder distance", frontRight.getEncPosition());
         SmartDashboard.putNumber("rearLeftEncoder distance", rearLeft.getEncPosition());
-        SmartDashboard.putNumber("rearRightEncoder distance", -rearRight.getEncPosition());
+        SmartDashboard.putNumber("rearRightEncoder distance", rearRight.getEncPosition());
 	}
 
 	public void autoDrive(double xSpeed, double ySpeed, double twist, double direction){
