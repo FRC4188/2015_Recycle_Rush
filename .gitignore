@@ -1,0 +1,7 @@
+.classpath
+.project
+**/build
+**/dist
+*.class
+*.jar
+**/sysProps.xml
