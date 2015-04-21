@@ -72,12 +72,25 @@ public class DriveTrain extends Subsystem{
         rearRight.setPosition(0);
 	}
 	
+	double total;
+	int count;
 	public double getDistance(){	// Returns value in inches
 		double frontLeft = Robot.drivetrain.getEncoderFL();
-		double frontRight = -Robot.drivetrain.getEncoderFR();
+		double frontRight = Robot.drivetrain.getEncoderFR();
 		double rearLeft = Robot.drivetrain.getEncoderRL();
-		double rearRight = -Robot.drivetrain.getEncoderRR();
-        return ((frontLeft + frontRight + rearLeft + rearRight) / 4.0) / tickDistance;
+		double rearRight = Robot.drivetrain.getEncoderRR();
+		
+		count=0;
+		total=0;		
+		if (frontLeft > 0) countTotal(frontLeft);  
+		if (frontRight > 0) countTotal(frontRight);  
+		if (rearLeft > 0) countTotal(rearLeft);  
+		if (rearRight > 0) countTotal(rearRight);  
+        return (total / count) / tickDistance;
+	}
+	public void countTotal(double input) {
+		total += Math.abs(input);
+		count++;			
 	}
 	
 	public void getEncoderValues(){        
