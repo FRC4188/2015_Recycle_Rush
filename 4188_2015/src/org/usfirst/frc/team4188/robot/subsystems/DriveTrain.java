@@ -81,16 +81,18 @@ public class DriveTrain extends Subsystem{
 		double rearRight = Robot.drivetrain.getEncoderRR();
 		
 		count=0;
-		total=0;		
-		if (frontLeft > 0) countTotal(frontLeft);  
-		if (frontRight > 0) countTotal(frontRight);  
-		if (rearLeft > 0) countTotal(rearLeft);  
-		if (rearRight > 0) countTotal(rearRight);  
+		total=0;
+		countTotal(frontLeft);  
+		countTotal(frontRight);  
+		countTotal(rearLeft);  
+		countTotal(rearRight);  
         return (total / count) / tickDistance;
 	}
-	public void countTotal(double input) {
-		total += Math.abs(input);
-		count++;			
+	private void countTotal(double input) {
+		if (input != 0) {
+			total += Math.abs(input);
+			count++;			
+		}
 	}
 	
 	public void getEncoderValues(){        
