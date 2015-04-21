@@ -18,7 +18,7 @@ public class DriveTrain extends Subsystem{
 	CANTalon rearRight = RobotMap.rearRight;
 	Gyro gyro = RobotMap.drivetraingyro;
 	
-	static final double tickDistance = RobotMap.ticksPerInch;
+	static final double TICKDISTANCE = RobotMap.TICKSPERINCH;
 	
 	public void init (){
 		gyro.reset();
@@ -86,7 +86,7 @@ public class DriveTrain extends Subsystem{
 		countTotal(frontRight);  
 		countTotal(rearLeft);  
 		countTotal(rearRight);  
-        return (total / count) / tickDistance;
+        return (total / count) / TICKDISTANCE;
 	}
 	private void countTotal(double input) {
 		if (input != 0) {

@@ -22,13 +22,13 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-	public static double canBurglarSpeed = 0.6;
+	public static final double CANBURGLARSPEED = 0.6;
 
 	// 8" wheels * pi = 25.132
 	// 360 ticks/revolution * 2 edges * 2 channels (a + b) = 1440
 	// 1440/25.132 = 57.3
 	// mechanum 20% loss * 57.3 = 45 
-	public static double ticksPerInch = 45;				// Ticks/inch for 8 inch mechanum wheels
+	public static final double TICKSPERINCH = 45;				// Ticks/inch for 8 inch mechanum wheels
 	
 	public static boolean exitAuto;
 	

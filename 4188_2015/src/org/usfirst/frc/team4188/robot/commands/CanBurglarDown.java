@@ -25,7 +25,7 @@ public class CanBurglarDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.canBurglar.goDown(RobotMap.canBurglarSpeed/2);
+    	Robot.canBurglar.goDown(RobotMap.CANBURGLARSPEED/2);
     }
 
     // Make this return true when this Command no longer needs to run execute()
