@@ -9,23 +9,34 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class CanBurglarDown extends Command {
+	double speed;	// 0-1
+	double timeout;
 
     public CanBurglarDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-//    	requires(Robot.canBurglar);
-    	this.setInterruptible(true);
+    	speed = RobotMap.CANBURGLARSPEED/2;
+    	timeout = 1.2;
+    }
+
+    public CanBurglarDown(double duration, double speedVector) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	speed = speedVector;
+    	timeout = duration;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.setTimeout(1.2);
+//    	requires(Robot.canBurglar);
+    	this.setInterruptible(true);
+    	this.setTimeout(timeout);
     	this.setInterruptible(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.canBurglar.goDown(RobotMap.CANBURGLARSPEED/2);
+    	Robot.canBurglar.goDown(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
