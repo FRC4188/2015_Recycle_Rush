@@ -28,13 +28,12 @@ public class CanBurgleAutonomousFast extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
     	// arm.
 
-    	addSequential (new CanBurglarDown(1.0, 0.6));	// Move arm down for x seconds at y speed
+    	addSequential (new CanBurglarDown(0.55, 0.6));	// Move arm down for x seconds at y speed
     	Timer.delay(0.1);								// Pause thread for x seconds
-    	addSequential (new CanBurglarUp(1.0));			// Move up for 1 second(s)
-    	
+    	addSequential (new CanBurglarUp(0.6));			// Move up for 1 second(s)
+
+    	addParallel (new CanBurglarStayUp());			// Hold arm up while driving and until end of autonomous
     	Robot.drivetrain.resetEncoders();				// Zero the encoders then move straight ahead at 60%
     	addSequential (new AutoDriveBearingForDistance(0.6, 0.0, 0.0, 60.0));
-
-    	addSequential (new CanBurglarStayUp());			// Move the arm all the way back to the top
     }
 }
