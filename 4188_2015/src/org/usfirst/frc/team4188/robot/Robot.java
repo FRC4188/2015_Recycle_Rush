@@ -55,6 +55,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addDefault("Pick up Tote and Move Forward", new GoForwardWithToteAutonomous() );
         autoChooser.addDefault("Can Burglar", new CanBurgleAutonomous());
         autoChooser.addDefault("Fast Expiremental Can Burglar", new CanBurgleAutonomousFast());
+        autoChooser.addDefault("****** Can Burglar TESTING ONLY ******", new CanBurgleAutonomousTest());
         autoChooser.addDefault("Do Nothing", new DoNothing());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }

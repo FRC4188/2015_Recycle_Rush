@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class CanBurglarUp extends Command {
-
+	double speed = RobotMap.CANBURGLARSPEED;
+	
     public CanBurglarUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -28,7 +29,7 @@ public class CanBurglarUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.canBurglar.goUp(RobotMap.CANBURGLARSPEED);
+    	Robot.canBurglar.goUp(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
